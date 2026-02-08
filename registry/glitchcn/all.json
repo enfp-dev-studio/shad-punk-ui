@@ -1,0 +1,36 @@
+{
+  "name": "all",
+  "type": "registry:ui",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [
+    "@glitchcn/globals",
+    "@glitchcn/accordion",
+    "@glitchcn/alert",
+    "@glitchcn/badge",
+    "@glitchcn/button",
+    "@glitchcn/card",
+    "@glitchcn/command",
+    "@glitchcn/dialog",
+    "@glitchcn/input",
+    "@glitchcn/progress",
+    "@glitchcn/separator",
+    "@glitchcn/sheet",
+    "@glitchcn/sidebar",
+    "@glitchcn/skeleton",
+    "@glitchcn/spinner",
+    "@glitchcn/table",
+    "@glitchcn/tabs",
+    "@glitchcn/tooltip"
+  ],
+  "files": [],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {}
+      }
+    }
+  }
+}
+
+
