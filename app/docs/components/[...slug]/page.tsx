@@ -18,6 +18,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Spinner, LoadingOverlay } from "@/components/ui/spinner";
 import { Checkbox } from "@/components/ui/checkbox";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 
 const docs: Record<string, { 
@@ -597,9 +598,16 @@ import { Button } from "@/components/ui/button"
     title: "Tooltip",
     description: "Contextual information on hover",
     preview: (
-      <div className="text-emerald-300/70 text-sm font-mono wrap-break-word">
-        Tooltip on hover
-      </div>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="outline">Hover me</Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Tooltip text</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     ),
     code: `import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 

@@ -28,7 +28,7 @@ function Progress({
           "bg-linear-to-r from-secondary to-primary",
           "shadow-[0_0_8px_rgba(var(--glow-rgb),0.35)]",
           "relative",
-          "after:absolute after:inset-0 after:bg-white/20 after:animate-pulse"
+          "after:absolute after:inset-0 after:bg-[repeating-linear-gradient(90deg,transparent,transparent_6px,rgba(0,0,0,0.3)_6px,rgba(0,0,0,0.3)_8px)]"
         )}
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
       />

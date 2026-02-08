@@ -20,10 +20,10 @@ const TooltipContent = React.forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
-        "z-50 origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs",
-        "bg-card text-primary border border-primary/30",
-        "shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.15),0_0_8px_rgba(var(--glow-rgb),0.25)]",
-        "font-mono tracking-wide",
+        "z-50 origin-(--radix-tooltip-content-transform-origin) px-3 py-1.5 text-xs",
+        "bg-card/50 backdrop-blur-md text-primary border border-primary/30 border-l-2 border-l-primary",
+        "shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.15),0_0_12px_rgba(var(--glow-rgb),0.3)]",
+        "font-mono tracking-wider uppercase",
         "animate-in fade-in-0 zoom-in-95",
         "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
         "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",

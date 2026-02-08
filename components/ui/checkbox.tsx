@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { CheckIcon } from "lucide-react"
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
+import * as React from "react";
+import { SquareIcon } from "lucide-react";
+import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
@@ -14,12 +14,12 @@ const Checkbox = React.forwardRef<
     ref={ref}
     data-slot="checkbox"
     className={cn(
-      "peer h-4 w-4 shrink-0 rounded-lg border border-primary/30 bg-card text-primary",
+      "peer h-4 w-4 shrink-0 border border-primary/30 bg-card text-primary",
       "shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.15),0_0_0_1px_rgba(var(--glow-rgb),0.1)]",
       "transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-      "data-[state=checked]:bg-primary data-[state=checked]:border-primary data-[state=checked]:text-primary-foreground",
+      "data-[state=checked]:border-primary",
       "disabled:cursor-not-allowed disabled:opacity-50",
-      className
+      className,
     )}
     {...props}
   >
@@ -27,11 +27,11 @@ const Checkbox = React.forwardRef<
       data-slot="checkbox-indicator"
       className="grid place-content-center text-current transition-transform"
     >
-      <CheckIcon className="h-3.5 w-3.5" />
+      <SquareIcon className="h-2.5 w-2.5 stroke-1 fill-primary" />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
-))
+));
 
-Checkbox.displayName = "Checkbox"
+Checkbox.displayName = "Checkbox";
 
-export { Checkbox }
+export { Checkbox };
