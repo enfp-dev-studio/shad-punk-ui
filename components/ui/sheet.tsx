@@ -17,7 +17,7 @@ const SheetOverlay = React.forwardRef<
   <SheetPrimitive.Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-[#001a1a]/80 backdrop-blur-sm",
+      "fixed inset-0 z-50 bg-background/80 backdrop-blur-sm",
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
@@ -39,9 +39,8 @@ const SheetContent = React.forwardRef<
       ref={ref}
       className={cn(
         "fixed z-50 flex flex-col gap-4 p-6",
-        // Card-like colors and border, but without complex clipping so content is always visible
-        "bg-[#001a1a] text-emerald-300 border border-emerald-500/50",
-        "shadow-[inset_0_1px_0_0_rgba(6,182,212,0.2),0_0_0_1px_rgba(6,182,212,0.15),0_4px_24px_rgba(0,0,0,0.4)]",
+        "bg-card text-card-foreground border border-primary/30",
+        "shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.15),0_0_0_1px_rgba(var(--glow-rgb),0.1),0_4px_24px_rgba(0,0,0,0.4)]",
         side === "right" && "inset-y-0 right-0 h-full w-full max-w-sm",
         side === "left" && "inset-y-0 left-0 h-full w-full max-w-sm",
         side === "top" && "inset-x-0 top-0 w-full max-h-[80vh]",
@@ -52,7 +51,7 @@ const SheetContent = React.forwardRef<
     >
       <SheetPrimitive.Close
         type="button"
-        className="absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 text-emerald-400 hover:text-emerald-300 hover:bg-[#002626] p-1.5 border border-transparent hover:border-emerald-500/50"
+        className="absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-primary/70 hover:text-primary hover:bg-primary/10 p-1.5 border border-transparent hover:border-primary/30"
       >
         <X className="h-4 w-4" />
         <span className="sr-only">Close</span>
@@ -69,8 +68,8 @@ SheetContent.displayName = SheetPrimitive.Content.displayName
 const SheetHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col gap-2 pb-4 border-b border-emerald-500/30 relative",
-      "before:absolute before:inset-x-0 before:bottom-0 before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(6,182,212,0.5),transparent)]",
+      "flex flex-col gap-2 pb-4 border-b border-primary/20",
+      "effect-separator-bottom",
       className
     )}
     {...props}
@@ -81,8 +80,8 @@ SheetHeader.displayName = "SheetHeader"
 const SheetFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "mt-auto flex flex-col gap-2 pt-4 border-t border-emerald-500/30 relative",
-      "before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(6,182,212,0.5),transparent)]",
+      "mt-auto flex flex-col gap-2 pt-4 border-t border-primary/20",
+      "effect-separator-top",
       className
     )}
     {...props}
@@ -96,7 +95,7 @@ const SheetTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
-    className={cn("text-lg font-semibold font-mono uppercase tracking-wider text-emerald-300", className)}
+    className={cn("text-lg font-semibold font-mono uppercase tracking-wider text-primary", className)}
     {...props}
   />
 ))
@@ -108,7 +107,7 @@ const SheetDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-emerald-400/70 font-mono tracking-wide", className)}
+    className={cn("text-sm text-muted-foreground font-mono tracking-wide", className)}
     {...props}
   />
 ))

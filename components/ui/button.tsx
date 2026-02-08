@@ -4,28 +4,28 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-mono tracking-[0.2em] uppercase text-lg font-bold transition-all duration-150 disabled:pointer-events-none disabled:opacity-25 [&_svg:not([class*='size-'])]:size-4 outline-none relative overflow-hidden group cursor-pointer [clip-path:polygon(0_8px,8px_0,calc(100%-8px)_0,100%_8px,100%_calc(100%-8px),calc(100%-8px)_100%,8px_100%,0_calc(100%-8px))]",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-mono tracking-[0.2em] uppercase text-lg font-bold transition-all duration-150 disabled:pointer-events-none disabled:opacity-25 [&_svg:not([class*='size-'])]:size-4 outline-none relative overflow-hidden group cursor-pointer [clip-path:var(--clip-button)]",
   {
     variants: {
       variant: {
         default: `
-          bg-transparent text-primary border border-primary/70
+          bg-transparent text-primary border border-primary/50
           hover:bg-primary/10 hover:border-primary hover:text-primary
-          shadow-[inset_0_1px_0_0_hsl(var(--primary)/0.25),0_0_0_1px_hsl(var(--primary)/0.2)]
-          hover:shadow-[inset_0_1px_0_0_hsl(var(--primary)/0.4),0_0_16px_hsl(var(--primary)/0.5),0_0_24px_hsl(var(--primary)/0.3)]
-          before:absolute before:inset-0 before:bg-[linear-gradient(90deg,transparent,hsl(var(--primary)/0.25),transparent)]
+          shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.2),0_0_0_1px_rgba(var(--glow-rgb),0.15)]
+          hover:shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.35),0_0_16px_rgba(var(--glow-rgb),0.4),0_0_24px_rgba(var(--glow-rgb),0.2)]
+          before:absolute before:inset-0 before:bg-[linear-gradient(90deg,transparent,rgba(var(--glow-rgb),0.2),transparent)]
           before:-translate-x-full hover:before:translate-x-full before:duration-500
-          after:absolute after:inset-0 after:bg-[linear-gradient(0deg,transparent_0%,hsl(var(--primary)/0.1)_50%,transparent_100%)]
+          after:absolute after:inset-0 after:bg-[linear-gradient(0deg,transparent_0%,rgba(var(--glow-rgb),0.08)_50%,transparent_100%)]
           after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300
         `,
         destructive: `
-          bg-transparent text-destructive border border-destructive/70
+          bg-transparent text-destructive border border-destructive/50
           hover:bg-destructive/10 hover:border-destructive
-          shadow-[inset_0_1px_0_0_hsl(var(--destructive)/0.25),0_0_0_1px_hsl(var(--destructive)/0.2)]
-          hover:shadow-[inset_0_1px_0_0_hsl(var(--destructive)/0.4),0_0_16px_hsl(var(--destructive)/0.5),0_0_24px_hsl(var(--destructive)/0.3)]
-          before:absolute before:inset-0 before:bg-[linear-gradient(90deg,transparent,hsl(var(--destructive)/0.25),transparent)]
+          shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.15),0_0_0_1px_rgba(var(--glow-rgb),0.1)]
+          hover:shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.3),0_0_16px_rgba(var(--glow-rgb),0.4),0_0_24px_rgba(var(--glow-rgb),0.2)]
+          before:absolute before:inset-0 before:bg-[linear-gradient(90deg,transparent,rgba(var(--glow-rgb),0.2),transparent)]
           before:-translate-x-full hover:before:translate-x-full before:duration-500
-          after:absolute after:inset-0 after:bg-[linear-gradient(0deg,transparent_0%,hsl(var(--destructive)/0.1)_50%,transparent_100%)]
+          after:absolute after:inset-0 after:bg-[linear-gradient(0deg,transparent_0%,rgba(var(--glow-rgb),0.08)_50%,transparent_100%)]
           after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300
         `,
       },

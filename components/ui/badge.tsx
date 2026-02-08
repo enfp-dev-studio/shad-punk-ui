@@ -4,39 +4,25 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center gap-1 font-mono tracking-[0.15em] uppercase text-[10px] font-bold transition-all duration-200 [clip-path:polygon(0_4px,4px_0,calc(100%-4px)_0,100%_4px,100%_calc(100%-4px),calc(100%-4px)_100%,4px_100%,0_calc(100%-4px))] relative overflow-hidden cursor-default w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 [&>svg]:pointer-events-none",
+  "inline-flex items-center justify-center gap-1 font-mono tracking-[0.15em] uppercase text-[10px] font-bold transition-all duration-200 [clip-path:var(--clip-badge)] relative overflow-hidden cursor-default w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 [&>svg]:pointer-events-none",
   {
     variants: {
       variant: {
         default: `
-          bg-[#001a1a] text-emerald-300 border border-emerald-500/70 px-2.5 py-1
-          shadow-[inset_0_1px_0_0_rgba(6,182,212,0.2),0_0_0_1px_rgba(6,182,212,0.15)]
-          hover:border-emerald-400 hover:text-emerald-200
-          hover:shadow-[inset_0_1px_0_0_rgba(6,182,212,0.3),0_0_8px_rgba(6,182,212,0.4)]
-          before:absolute before:inset-0 before:bg-[linear-gradient(90deg,transparent,rgba(6,182,212,0.15),transparent)]
+          bg-card text-primary border border-primary/50 px-2.5 py-1
+          shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.15),0_0_0_1px_rgba(var(--glow-rgb),0.1)]
+          hover:border-primary/70 hover:text-primary
+          hover:shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.25),0_0_8px_rgba(var(--glow-rgb),0.3)]
+          before:absolute before:inset-0 before:bg-[linear-gradient(90deg,transparent,rgba(var(--glow-rgb),0.12),transparent)]
           before:-translate-x-full hover:before:translate-x-full before:duration-300
-          
-          data-[theme=light]:bg-[#001a1a]
-          data-[theme=light]:text-emerald-300
-          data-[theme=light]:border-emerald-500/70
-          data-[theme=light]:hover:bg-[#002626]
-          data-[theme=light]:hover:border-emerald-400
-          data-[theme=light]:shadow-[inset_0_1px_0_0_rgba(6,182,212,0.2),0_0_0_1px_rgba(6,182,212,0.15)]
         `,
         destructive: `
-          bg-[#1a0000] text-rose-300 border border-rose-500/70 px-2.5 py-1
-          shadow-[inset_0_1px_0_0_rgba(239,68,68,0.2),0_0_0_1px_rgba(239,68,68,0.15)]
-          hover:border-rose-400
-          hover:shadow-[inset_0_1px_0_0_rgba(239,68,68,0.3),0_0_8px_rgba(239,68,68,0.4)]
-          before:absolute before:inset-0 before:bg-[linear-gradient(90deg,transparent,rgba(239,68,68,0.15),transparent)]
+          bg-destructive/10 text-destructive border border-destructive/50 px-2.5 py-1
+          shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.1),0_0_0_1px_rgba(var(--glow-rgb),0.08)]
+          hover:border-destructive/70
+          hover:shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.2),0_0_8px_rgba(var(--glow-rgb),0.3)]
+          before:absolute before:inset-0 before:bg-[linear-gradient(90deg,transparent,rgba(var(--glow-rgb),0.12),transparent)]
           before:-translate-x-full hover:before:translate-x-full before:duration-300
-          
-          data-[theme=light]:bg-[#1a0000]
-          data-[theme=light]:text-rose-300
-          data-[theme=light]:border-rose-500/70
-          data-[theme=light]:hover:bg-[#260000]
-          data-[theme=light]:hover:border-rose-400
-          data-[theme=light]:shadow-[inset_0_1px_0_0_rgba(239,68,68,0.2),0_0_0_1px_rgba(239,68,68,0.15)]
         `
       },
     },

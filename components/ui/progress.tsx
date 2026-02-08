@@ -15,10 +15,8 @@ function Progress({
       data-slot="progress"
       className={cn(
         "relative h-2 w-full overflow-hidden",
-        "bg-[#001a1a] border border-emerald-500/30",
-        "shadow-[inset_0_1px_0_0_rgba(6,182,212,0.1)]",
-        "clip-path-[polygon(0_2px,2px_0,calc(100%-2px)_0,100%_2px,100%_calc(100%-2px),calc(100%-2px)_100%,2px_100%,0_calc(100%-2px))]",
-        "data-[theme=light]:bg-[#001a1a] data-[theme=light]:border-emerald-500/30",
+        "bg-card border border-primary/20",
+        "shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.08)]",
         className
       )}
       {...props}
@@ -27,8 +25,8 @@ function Progress({
         data-slot="progress-indicator"
         className={cn(
           "h-full w-full flex-1 transition-all duration-300 ease-out",
-          "bg-linear-to-r from-cyan-500 to-emerald-400",
-          "shadow-[0_0_8px_rgba(6,182,212,0.4)]",
+          "bg-linear-to-r from-secondary to-primary",
+          "shadow-[0_0_8px_rgba(var(--glow-rgb),0.35)]",
           "relative",
           "after:absolute after:inset-0 after:bg-white/20 after:animate-pulse"
         )}

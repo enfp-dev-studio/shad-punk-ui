@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
-
-
 
 export const metadata: Metadata = {
   title: "Glitchcn/ui",
-  description: "I don't have a desc, yet!",
+  description: "Dual-theme cyberpunk UI component library — Edgerunners + Armored Core",
   icons: {
     icon: '/favicon.svg'
   }
@@ -17,15 +16,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet" />
       </head>
-      <body
-        className={``}
-      >{children}
+      <body>
+        <ThemeProvider
+          attribute="data-theme"
+          defaultTheme="edgerunners"
+          themes={["edgerunners", "armored-core"]}
+          enableSystem={false}
+          disableTransitionOnChange={false}
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
