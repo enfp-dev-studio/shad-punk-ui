@@ -8,7 +8,13 @@
 
 @layer base {
   :root {
-    --font-mono: "Bitcount Grid Single", monospace;
+    /* Font — uncomment one */
+    /* --font-mono: "Share Tech Mono", monospace; */
+    /* --font-mono: "Bitcount Grid Single", monospace; */
+    /* --font-mono: "Space Mono", monospace; */
+    /* --font-mono: "JetBrains Mono", monospace; */
+    /* --font-mono: "Rajdhani", sans-serif; */
+    --font-mono: "Orbitron", sans-serif;
     --radius: 0.625rem;
   }
 }

@@ -21,7 +21,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="/augmented-ui.min.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&family=Share+Tech+Mono&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400..900&display=swap" rel="stylesheet" />
       </head>
       <body>
         <ThemeProvider
