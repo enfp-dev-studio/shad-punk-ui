@@ -94,35 +94,21 @@ html {
   /* Effects */
   --scanline-opacity: 0.04;
   --scanline-speed: 6s;
-  --clip-offset: 10px;
-  --clip-offset-sm: 5px;
   --corner-size: 14px;
 
-  /* Clip-paths: Asymmetric diagonal cuts (top-left + bottom-right only) */
-  --clip-card: polygon(
-    0 var(--clip-offset),
-    var(--clip-offset) 0,
-    100% 0,
-    100% calc(100% - var(--clip-offset)),
-    calc(100% - var(--clip-offset)) 100%,
-    0 100%
-  );
-  --clip-button: polygon(
-    0 var(--clip-offset-sm),
-    var(--clip-offset-sm) 0,
-    100% 0,
-    100% calc(100% - var(--clip-offset-sm)),
-    calc(100% - var(--clip-offset-sm)) 100%,
-    0 100%
-  );
-  --clip-badge: polygon(
-    0 3px,
-    3px 0,
-    100% 0,
-    100% calc(100% - 3px),
-    calc(100% - 3px) 100%,
-    0 100%
-  );
+  /* Augmented-ui: asymmetric TL+BR only (0px = disabled) */
+  --aug-card-tl: 10px;
+  --aug-card-tr: 0px;
+  --aug-card-br: 10px;
+  --aug-card-bl: 0px;
+  --aug-btn-tl: 5px;
+  --aug-btn-tr: 0px;
+  --aug-btn-br: 5px;
+  --aug-btn-bl: 0px;
+  --aug-badge-tl: 3px;
+  --aug-badge-tr: 0px;
+  --aug-badge-br: 3px;
+  --aug-badge-bl: 0px;
 }
 
 /* ============================================================
@@ -176,41 +162,21 @@ html {
   /* Effects */
   --scanline-opacity: 0.02;
   --scanline-speed: 10s;
-  --clip-offset: 6px;
-  --clip-offset-sm: 4px;
   --corner-size: 10px;
 
-  /* Clip-paths: Symmetric octagonal cuts (all 4 corners) */
-  --clip-card: polygon(
-    0 var(--clip-offset),
-    var(--clip-offset) 0,
-    calc(100% - var(--clip-offset)) 0,
-    100% var(--clip-offset),
-    100% calc(100% - var(--clip-offset)),
-    calc(100% - var(--clip-offset)) 100%,
-    var(--clip-offset) 100%,
-    0 calc(100% - var(--clip-offset))
-  );
-  --clip-button: polygon(
-    0 var(--clip-offset-sm),
-    var(--clip-offset-sm) 0,
-    calc(100% - var(--clip-offset-sm)) 0,
-    100% var(--clip-offset-sm),
-    100% calc(100% - var(--clip-offset-sm)),
-    calc(100% - var(--clip-offset-sm)) 100%,
-    var(--clip-offset-sm) 100%,
-    0 calc(100% - var(--clip-offset-sm))
-  );
-  --clip-badge: polygon(
-    0 3px,
-    3px 0,
-    calc(100% - 3px) 0,
-    100% 3px,
-    100% calc(100% - 3px),
-    calc(100% - 3px) 100%,
-    3px 100%,
-    0 calc(100% - 3px)
-  );
+  /* Augmented-ui: symmetric 4-corner */
+  --aug-card-tl: 6px;
+  --aug-card-tr: 6px;
+  --aug-card-br: 6px;
+  --aug-card-bl: 6px;
+  --aug-btn-tl: 4px;
+  --aug-btn-tr: 4px;
+  --aug-btn-br: 4px;
+  --aug-btn-bl: 4px;
+  --aug-badge-tl: 3px;
+  --aug-badge-tr: 3px;
+  --aug-badge-br: 3px;
+  --aug-badge-bl: 3px;
 }
 
 /* ============================================================
@@ -275,6 +241,39 @@ html {
    Extracted from inline pseudo-element classes across components
    ============================================================ */
 
+/* ============================================================
+   AUGMENTED-UI UTILITY CLASSES
+   Forward theme variables to augmented-ui's --aug-* system
+   ============================================================ */
+
+.aug-card[data-augmented-ui] {
+  --aug-tl: var(--aug-card-tl);
+  --aug-tr: var(--aug-card-tr);
+  --aug-br: var(--aug-card-br);
+  --aug-bl: var(--aug-card-bl);
+  --aug-border-all: 1px;
+  --aug-border-bg: var(--border);
+}
+
+.aug-button[data-augmented-ui] {
+  --aug-tl: var(--aug-btn-tl);
+  --aug-tr: var(--aug-btn-tr);
+  --aug-br: var(--aug-btn-br);
+  --aug-bl: var(--aug-btn-bl);
+  --aug-border-all: 1px;
+  --aug-border-bg: var(--primary);
+}
+
+.aug-badge[data-augmented-ui] {
+  --aug-tl: var(--aug-badge-tl);
+  --aug-tr: var(--aug-badge-tr);
+  --aug-br: var(--aug-badge-br);
+  --aug-bl: var(--aug-badge-bl);
+  --aug-border-all: 1px;
+  --aug-border-bg: var(--border);
+}
+
+
 @layer utilities {
   /* Scanline overlay - both themes, color from variables */
   .effect-scanline {
@@ -297,23 +296,100 @@ html {
     z-index: 0;
   }
 
-  /* Corner bracket decorator */
+  /* Corner bracket decorator - 4 corners via background-image gradients */
+  .effect-corner {
+    --_corner-color: rgba(var(--glow-secondary-rgb), var(--corner-opacity, 0.6));
+    --_corner-w: 2px;
+  }
   .effect-corner::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: var(--corner-size);
-    height: var(--corner-size);
-    border-left: 2px solid rgba(var(--glow-secondary-rgb), 0.6);
-    border-top: 2px solid rgba(var(--glow-secondary-rgb), 0.6);
-    transition: all 300ms;
+    inset: 0;
+    pointer-events: none;
     z-index: 2;
+    transition: filter 300ms;
+    background-image:
+      /* ── Top-left ── */
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      /* ── Top-right ── */
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      /* ── Bottom-left ── */
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      /* ── Bottom-right ── */
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      linear-gradient(var(--_corner-color), var(--_corner-color));
+    background-size:
+      var(--corner-size) var(--_corner-w),   /* TL horizontal */
+      var(--_corner-w) var(--corner-size),   /* TL vertical */
+      var(--corner-size) var(--_corner-w),   /* TR horizontal */
+      var(--_corner-w) var(--corner-size),   /* TR vertical */
+      var(--corner-size) var(--_corner-w),   /* BL horizontal */
+      var(--_corner-w) var(--corner-size),   /* BL vertical */
+      var(--corner-size) var(--_corner-w),   /* BR horizontal */
+      var(--_corner-w) var(--corner-size);   /* BR vertical */
+    background-position:
+      0 0,       0 0,       /* TL */
+      100% 0,    100% 0,    /* TR */
+      0 100%,    0 100%,    /* BL */
+      100% 100%, 100% 100%; /* BR */
+    background-repeat: no-repeat;
   }
   .effect-corner:hover::after {
-    width: calc(var(--corner-size) + 4px);
-    height: calc(var(--corner-size) + 4px);
-    border-color: rgba(var(--glow-secondary-rgb), 0.9);
+    filter: drop-shadow(0 0 4px var(--_corner-color));
+    --corner-opacity: 0.9;
+  }
+
+  /* Inner element equivalents (for augmented-ui compat — no pseudo conflicts) */
+  .effect-scanline-inner {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      0deg,
+      transparent 0%,
+      rgba(var(--glow-rgb), var(--scanline-opacity)) 50%,
+      transparent 100%
+    );
+    background-size: 100% 4px;
+    animation: scanline var(--scanline-speed) linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .effect-corner-inner {
+    --_corner-color: rgba(var(--glow-secondary-rgb), var(--corner-opacity, 0.6));
+    --_corner-w: 2px;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    transition: filter 300ms;
+    background-image:
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      linear-gradient(var(--_corner-color), var(--_corner-color)),
+      linear-gradient(var(--_corner-color), var(--_corner-color));
+    background-size:
+      var(--corner-size) var(--_corner-w),
+      var(--_corner-w) var(--corner-size),
+      var(--corner-size) var(--_corner-w),
+      var(--_corner-w) var(--corner-size),
+      var(--corner-size) var(--_corner-w),
+      var(--_corner-w) var(--corner-size),
+      var(--corner-size) var(--_corner-w),
+      var(--_corner-w) var(--corner-size);
+    background-position:
+      0 0,       0 0,
+      100% 0,    100% 0,
+      0 100%,    0 100%,
+      100% 100%, 100% 100%;
+    background-repeat: no-repeat;
   }
 
   /* Separator gradient line */
@@ -356,15 +432,76 @@ html {
    THEME-SPECIFIC EFFECTS
    ============================================================ */
 
-/* Edgerunners: 4-corner reticle brackets */
+/* Edgerunners: Asymmetric 2-corner brackets (TL + BR only) */
 [data-theme="edgerunners"] .effect-corner::after {
-  border-color: rgba(var(--glow-secondary-rgb), 0.7);
+  --corner-opacity: 0.7;
+  background-image:
+    /* ── Top-left ── */
+    linear-gradient(var(--_corner-color), var(--_corner-color)),
+    linear-gradient(var(--_corner-color), var(--_corner-color)),
+    /* ── Top-right: hidden ── */
+    none, none,
+    /* ── Bottom-left: hidden ── */
+    none, none,
+    /* ── Bottom-right ── */
+    linear-gradient(var(--_corner-color), var(--_corner-color)),
+    linear-gradient(var(--_corner-color), var(--_corner-color));
+  filter: drop-shadow(0 0 3px rgba(var(--glow-secondary-rgb), 0.4));
+}
+[data-theme="edgerunners"] .effect-corner:hover::after {
+  filter: drop-shadow(0 0 6px rgba(var(--glow-secondary-rgb), 0.7));
 }
 
-/* Armored Core: 4-corner targeting reticle */
+/* Armored Core: Symmetric 4-corner targeting reticle (dashed) */
+[data-theme="armored-core"] .effect-corner {
+  --_corner-w: 1.5px;
+  --corner-opacity: 0.5;
+}
 [data-theme="armored-core"] .effect-corner::after {
-  border-left-style: dashed;
-  border-top-style: dashed;
+  background-image:
+    /* ── Top-left ── */
+    repeating-linear-gradient(to right, var(--_corner-color) 0 3px, transparent 3px 6px),
+    repeating-linear-gradient(to bottom, var(--_corner-color) 0 3px, transparent 3px 6px),
+    /* ── Top-right ── */
+    repeating-linear-gradient(to left, var(--_corner-color) 0 3px, transparent 3px 6px),
+    repeating-linear-gradient(to bottom, var(--_corner-color) 0 3px, transparent 3px 6px),
+    /* ── Bottom-left ── */
+    repeating-linear-gradient(to right, var(--_corner-color) 0 3px, transparent 3px 6px),
+    repeating-linear-gradient(to top, var(--_corner-color) 0 3px, transparent 3px 6px),
+    /* ── Bottom-right ── */
+    repeating-linear-gradient(to left, var(--_corner-color) 0 3px, transparent 3px 6px),
+    repeating-linear-gradient(to top, var(--_corner-color) 0 3px, transparent 3px 6px);
+}
+[data-theme="armored-core"] .effect-corner:hover::after {
+  --corner-opacity: 0.8;
+  filter: drop-shadow(0 0 3px rgba(var(--glow-secondary-rgb), 0.3));
+}
+
+/* Inner element equivalents for theme-specific corner brackets */
+[data-theme="edgerunners"] .effect-corner-inner {
+  --corner-opacity: 0.7;
+  background-image:
+    linear-gradient(var(--_corner-color), var(--_corner-color)),
+    linear-gradient(var(--_corner-color), var(--_corner-color)),
+    none, none,
+    none, none,
+    linear-gradient(var(--_corner-color), var(--_corner-color)),
+    linear-gradient(var(--_corner-color), var(--_corner-color));
+  filter: drop-shadow(0 0 3px rgba(var(--glow-secondary-rgb), 0.4));
+}
+
+[data-theme="armored-core"] .effect-corner-inner {
+  --_corner-w: 1.5px;
+  --corner-opacity: 0.5;
+  background-image:
+    repeating-linear-gradient(to right, var(--_corner-color) 0 3px, transparent 3px 6px),
+    repeating-linear-gradient(to bottom, var(--_corner-color) 0 3px, transparent 3px 6px),
+    repeating-linear-gradient(to left, var(--_corner-color) 0 3px, transparent 3px 6px),
+    repeating-linear-gradient(to bottom, var(--_corner-color) 0 3px, transparent 3px 6px),
+    repeating-linear-gradient(to right, var(--_corner-color) 0 3px, transparent 3px 6px),
+    repeating-linear-gradient(to top, var(--_corner-color) 0 3px, transparent 3px 6px),
+    repeating-linear-gradient(to left, var(--_corner-color) 0 3px, transparent 3px 6px),
+    repeating-linear-gradient(to top, var(--_corner-color) 0 3px, transparent 3px 6px);
 }
 
 /* Armored Core: Grid overlay */

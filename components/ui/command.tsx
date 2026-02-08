@@ -11,23 +11,27 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import { ScanlineOverlay } from "@/components/ui/scanline-overlay"
 
 function Command({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof CommandPrimitive>) {
   return (
     <CommandPrimitive
       data-slot="command"
+      data-augmented-ui="tl-clip tr-clip br-clip bl-clip border"
       className={cn(
-        "bg-card text-card-foreground flex h-full w-full flex-col overflow-hidden border border-primary/30 relative",
-        "[clip-path:var(--clip-card)]",
+        "bg-card text-card-foreground flex h-full w-full flex-col overflow-hidden aug-card relative",
         "shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.15),0_0_0_1px_rgba(var(--glow-rgb),0.1)]",
-        "effect-scanline effect-corner",
         className
       )}
       {...props}
-    />
+    >
+      <ScanlineOverlay />
+      {children}
+    </CommandPrimitive>
   )
 }
 

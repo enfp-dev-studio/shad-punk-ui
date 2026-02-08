@@ -3,20 +3,22 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import { ScanlineOverlay } from "@/components/ui/scanline-overlay"
 
 function Table({ className, ...props }: React.ComponentProps<"table">) {
   return (
     <div
       data-slot="table-container"
+      data-augmented-ui="tl-clip tr-clip br-clip bl-clip border"
       className={cn(
         "relative w-full overflow-x-auto",
-        "bg-card text-card-foreground border border-primary/30 [clip-path:var(--clip-card)] overflow-hidden group",
+        "bg-card text-card-foreground aug-card overflow-hidden group",
         "shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.15),0_0_0_1px_rgba(var(--glow-rgb),0.1),0_4px_24px_rgba(0,0,0,0.4)]",
-        "hover:border-primary/50 hover:shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.25),0_0_16px_rgba(var(--glow-rgb),0.25),0_0_32px_rgba(var(--glow-rgb),0.1)]",
-        "transition-all duration-300",
-        "effect-scanline"
+        "hover:shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.25),0_0_16px_rgba(var(--glow-rgb),0.25),0_0_32px_rgba(var(--glow-rgb),0.1)]",
+        "transition-all duration-300"
       )}
     >
+      <ScanlineOverlay />
       <table
         data-slot="table"
         className={cn("w-full caption-bottom text-sm font-mono relative z-10", className)}

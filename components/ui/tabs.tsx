@@ -4,6 +4,7 @@ import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
 
 import { cn } from "@/lib/utils"
+import { ScanlineOverlay } from "@/components/ui/scanline-overlay"
 
 function Tabs({
   className,
@@ -20,20 +21,24 @@ function Tabs({
 
 function TabsList({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.List>) {
   return (
     <TabsPrimitive.List
       data-slot="tabs-list"
+      data-augmented-ui="tl-clip tr-clip br-clip bl-clip border"
       className={cn(
         "inline-flex h-9 w-fit items-center justify-center p-[3px] gap-1",
-        "bg-card border border-primary/30 [clip-path:var(--clip-card)] relative overflow-hidden",
+        "bg-card aug-card relative overflow-hidden",
         "shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.15),0_0_0_1px_rgba(var(--glow-rgb),0.1)]",
-        "effect-scanline",
         className
       )}
       {...props}
-    />
+    >
+      <ScanlineOverlay />
+      {children}
+    </TabsPrimitive.List>
   )
 }
 

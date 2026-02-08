@@ -35,12 +35,11 @@ const DialogContent = React.forwardRef<
     <DialogOverlay />
     <DialogPrimitive.Content
       ref={ref}
+      data-augmented-ui="tl-clip tr-clip br-clip bl-clip border"
       className={cn(
         "fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 p-6",
-        "sm:rounded-lg border",
-        "bg-card text-card-foreground border-primary/30",
+        "bg-card text-card-foreground aug-card",
         "shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.15),0_0_0_1px_rgba(var(--glow-rgb),0.1),0_8px_32px_rgba(0,0,0,0.6)]",
-        "[clip-path:var(--clip-card)]",
         "duration-200 data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0",
         "data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=closed]:fade-out-0",
         className
@@ -50,10 +49,10 @@ const DialogContent = React.forwardRef<
       {children}
 
       <DialogPrimitive.Close
+        data-augmented-ui="tl-clip tr-clip br-clip bl-clip border"
         className={cn(
           "absolute right-4 top-4 p-1",
-          "text-primary/70 hover:text-primary",
-          "[clip-path:var(--clip-badge)]",
+          "text-primary/70 hover:text-primary aug-badge",
           "hover:bg-primary/10",
           "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-card"
         )}

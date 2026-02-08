@@ -2,6 +2,7 @@ import * as React from "react"
 import { Loader2Icon } from "lucide-react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
+import { ScanlineOverlay } from "@/components/ui/scanline-overlay"
 
 const spinnerVariants = cva(
   "animate-spin",
@@ -55,19 +56,19 @@ function LoadingOverlay({
   return (
     <div
       data-slot="loading-overlay"
+      data-augmented-ui="tl-clip tr-clip br-clip bl-clip border"
       className={cn(
         "absolute inset-0 z-50 flex flex-col items-center justify-center gap-4",
-        "bg-card/95 backdrop-blur-sm",
-        "border border-primary/20",
-        "[clip-path:var(--clip-card)]",
-        "effect-scanline",
+        "bg-card/95 backdrop-blur-sm aug-card",
+        "relative overflow-hidden",
         className
       )}
       {...props}
     >
+      <ScanlineOverlay />
       <Spinner size={size} variant={variant} />
       {(text || children) && (
-        <div className="font-mono text-sm tracking-wider uppercase text-primary/90">
+        <div className="font-mono text-sm tracking-wider uppercase text-primary/90 relative z-10">
           {text || children}
         </div>
       )}
