@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "tsx scripts/registry.ts && next build",
     "start": "next start",
     "lint": "eslint",
     "generate": "tsx scripts/registry.ts",

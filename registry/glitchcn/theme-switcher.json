@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-switcher",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge",
+    "lucide-react",
+    "next-themes"
+  ],
+  "devDependencies": [],
+  "registryDependencies": [
+    "@glitchcn/globals"
+  ],
+  "files": [
+    {
+      "path": "components/ui/theme-switcher.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { useTheme } from \"next-themes\"\nimport { Zap, Crosshair } from \"lucide-react\"\nimport { cn } from \"@/lib/utils\"\n\nfunction ThemeSwitcher({ className }: { className?: string }) {\n  const { theme, setTheme } = useTheme()\n  const [mounted, setMounted] = React.useState(false)\n\n  React.useEffect(() => setMounted(true), [])\n\n  if (!mounted) return null\n\n  const isEdgerunners = theme === \"edgerunners\"\n\n  return (\n    <button\n      onClick={() => setTheme(isEdgerunners ? \"armored-core\" : \"edgerunners\")}\n      data-augmented-ui=\"tl-clip tr-clip br-clip bl-clip border\"\n      className={cn(\n        \"inline-flex items-center gap-2 px-3 py-1.5 font-mono text-[10px] font-bold tracking-[0.2em] uppercase\",\n        \"bg-card/50 text-primary aug-button\",\n        \"hover:shadow-[0_0_12px_rgba(var(--glow-rgb),0.4)]\",\n        \"transition-all duration-300 cursor-pointer\",\n        className\n      )}\n    >\n      {isEdgerunners ? (\n        <>\n          <Zap size={12} />\n          <span>Edgerunners</span>\n        </>\n      ) : (\n        <>\n          <Crosshair size={12} />\n          <span>Armored Core</span>\n        </>\n      )}\n    </button>\n  )\n}\n\nexport { ThemeSwitcher }\n",
+      "type": "registry:ui",
+      "target": "components/ui/theme-switcher.tsx"
+    },
+    {
+      "path": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:lib",
+      "target": "lib/utils.ts"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {}
+      }
+    }
+  }
+}

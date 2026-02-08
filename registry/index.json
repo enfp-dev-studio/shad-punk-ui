@@ -1,8 +1,8 @@
 {
   "name": "glitchcn",
   "type": "registry:style",
-  "registryUrl": "https://glitchcn-ui.vercel.app/api/registry",
-  "description": "Terminal-styled cyberpunk component library",
+  "registryUrl": "https://glitchcn-ui.vercel.app/r",
+  "description": "Dual-theme cyberpunk component library",
   "author": "woustachemax",
   "scope": "@glitchcn",
   "styles": [
@@ -13,109 +13,186 @@
   ],
   "components": [
     {
-      "name": "utils",
-      "type": "registry:lib",
-      "files": ["glitchcn/utils.json"]
-    },
-    {
-      "name": "globals",
-      "type": "registry:style",
-      "files": ["glitchcn/globals.json"]
-    },
-    {
-      "name": "layout",
-      "type": "registry:app",
-      "files": ["glitchcn/layout.json"]
-    },
-    {
       "name": "accordion",
       "type": "registry:ui",
-      "files": ["glitchcn/accordion.json"]
+      "files": [
+        "glitchcn/accordion.json"
+      ]
     },
     {
       "name": "alert",
       "type": "registry:ui",
-      "files": ["glitchcn/alert.json"]
+      "files": [
+        "glitchcn/alert.json"
+      ]
     },
     {
       "name": "badge",
       "type": "registry:ui",
-      "files": ["glitchcn/badge.json"]
+      "files": [
+        "glitchcn/badge.json"
+      ]
     },
     {
       "name": "button",
       "type": "registry:ui",
-      "files": ["glitchcn/button.json"]
+      "files": [
+        "glitchcn/button.json"
+      ]
     },
     {
       "name": "card",
       "type": "registry:ui",
-      "files": ["glitchcn/card.json"]
+      "files": [
+        "glitchcn/card.json"
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "files": [
+        "glitchcn/checkbox.json"
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "files": [
+        "glitchcn/collapsible.json"
+      ]
     },
     {
       "name": "command",
       "type": "registry:ui",
-      "files": ["glitchcn/command.json"]
+      "files": [
+        "glitchcn/command.json"
+      ]
+    },
+    {
+      "name": "corner-brackets",
+      "type": "registry:ui",
+      "files": [
+        "glitchcn/corner-brackets.json"
+      ]
     },
     {
       "name": "dialog",
       "type": "registry:ui",
-      "files": ["glitchcn/dialog.json"]
+      "files": [
+        "glitchcn/dialog.json"
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "files": [
+        "glitchcn/input-otp.json"
+      ]
     },
     {
       "name": "input",
       "type": "registry:ui",
-      "files": ["glitchcn/input.json"]
+      "files": [
+        "glitchcn/input.json"
+      ]
     },
     {
       "name": "progress",
       "type": "registry:ui",
-      "files": ["glitchcn/progress.json"]
+      "files": [
+        "glitchcn/progress.json"
+      ]
+    },
+    {
+      "name": "scanline-overlay",
+      "type": "registry:ui",
+      "files": [
+        "glitchcn/scanline-overlay.json"
+      ]
     },
     {
       "name": "separator",
       "type": "registry:ui",
-      "files": ["glitchcn/separator.json"]
+      "files": [
+        "glitchcn/separator.json"
+      ]
     },
     {
       "name": "sheet",
       "type": "registry:ui",
-      "files": ["glitchcn/sheet.json"]
+      "files": [
+        "glitchcn/sheet.json"
+      ]
     },
     {
       "name": "sidebar",
       "type": "registry:ui",
-      "files": ["glitchcn/sidebar.json"]
+      "files": [
+        "glitchcn/sidebar.json"
+      ]
     },
     {
       "name": "skeleton",
       "type": "registry:ui",
-      "files": ["glitchcn/skeleton.json"]
+      "files": [
+        "glitchcn/skeleton.json"
+      ]
     },
     {
       "name": "spinner",
       "type": "registry:ui",
-      "files": ["glitchcn/spinner.json"]
+      "files": [
+        "glitchcn/spinner.json"
+      ]
     },
     {
       "name": "table",
       "type": "registry:ui",
-      "files": ["glitchcn/table.json"]
+      "files": [
+        "glitchcn/table.json"
+      ]
     },
     {
       "name": "tabs",
       "type": "registry:ui",
-      "files": ["glitchcn/tabs.json"]
+      "files": [
+        "glitchcn/tabs.json"
+      ]
+    },
+    {
+      "name": "theme-switcher",
+      "type": "registry:ui",
+      "files": [
+        "glitchcn/theme-switcher.json"
+      ]
     },
     {
       "name": "tooltip",
       "type": "registry:ui",
-      "files": ["glitchcn/tooltip.json"]
+      "files": [
+        "glitchcn/tooltip.json"
+      ]
+    },
+    {
+      "name": "globals",
+      "type": "registry:style",
+      "files": [
+        "glitchcn/globals.json"
+      ]
+    },
+    {
+      "name": "layout",
+      "type": "registry:file",
+      "files": [
+        "glitchcn/layout.json"
+      ]
     },
     {
       "name": "all",
       "type": "registry:ui",
-      "files": ["glitchcn/all.json"]
+      "files": [
+        "glitchcn/all.json"
+      ]
     }
   ]
 }

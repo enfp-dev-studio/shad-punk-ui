@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# generated registry (served as static files)
+public/r/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

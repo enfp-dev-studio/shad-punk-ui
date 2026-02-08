@@ -1,17 +1,21 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "checkbox",
   "type": "registry:ui",
   "dependencies": [
     "clsx",
     "tailwind-merge",
-    "lucide-react"
+    "lucide-react",
+    "@radix-ui/react-checkbox"
   ],
   "devDependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "@glitchcn/globals"
+  ],
   "files": [
     {
       "path": "components/ui/checkbox.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { CheckIcon } from \"lucide-react\"\nimport * as CheckboxPrimitive from \"@radix-ui/react-checkbox\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Checkbox = React.forwardRef<\n  React.ElementRef<typeof CheckboxPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>\n>(({ className, ...props }, ref) => (\n  <CheckboxPrimitive.Root\n    ref={ref}\n    data-slot=\"checkbox\"\n    className={cn(\n      \"peer h-4 w-4 shrink-0 rounded-lg border border-emerald-500/50 bg-[#001a1a] text-emerald-300\",\n      \"shadow-[inset_0_1px_0_0_rgba(6,182,212,0.2),0_0_0_1px_rgba(6,182,212,0.15)]\",\n      \"transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n      \"data-[state=checked]:bg-emerald-400 data-[state=checked]:border-emerald-400 data-[state=checked]:text-emerald-900\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n      className\n    )}\n    {...props}\n  >\n    <CheckboxPrimitive.Indicator\n      data-slot=\"checkbox-indicator\"\n      className=\"grid place-content-center text-current transition-transform\"\n    >\n      <CheckIcon className=\"h-3.5 w-3.5\" />\n    </CheckboxPrimitive.Indicator>\n  </CheckboxPrimitive.Root>\n))\n\nCheckbox.displayName = \"Checkbox\"\n\nexport { Checkbox }\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { SquareIcon } from \"lucide-react\";\nimport * as CheckboxPrimitive from \"@radix-ui/react-checkbox\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst Checkbox = React.forwardRef<\n  React.ElementRef<typeof CheckboxPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>\n>(({ className, ...props }, ref) => (\n  <CheckboxPrimitive.Root\n    ref={ref}\n    data-slot=\"checkbox\"\n    className={cn(\n      \"peer h-4 w-4 shrink-0 border border-primary/30 bg-card text-primary\",\n      \"shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.15),0_0_0_1px_rgba(var(--glow-rgb),0.1)]\",\n      \"transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n      \"data-[state=checked]:border-primary\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n      className,\n    )}\n    {...props}\n  >\n    <CheckboxPrimitive.Indicator\n      data-slot=\"checkbox-indicator\"\n      className=\"grid place-content-center text-current transition-transform\"\n    >\n      <SquareIcon className=\"h-2.5 w-2.5 stroke-1 fill-primary\" />\n    </CheckboxPrimitive.Indicator>\n  </CheckboxPrimitive.Root>\n));\n\nCheckbox.displayName = \"Checkbox\";\n\nexport { Checkbox };\n",
       "type": "registry:ui",
       "target": "components/ui/checkbox.tsx"
     },
