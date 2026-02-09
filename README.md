@@ -65,6 +65,8 @@ Integrates with shadcn/ui CLI:
 
 #### Step 1: Configure components.json
 
+Add the `@shad-punk` registry to your `components.json`:
+
 ```json
 {
   "$schema": "https://ui.shadcn.com/schema.json",
@@ -80,6 +82,9 @@ Integrates with shadcn/ui CLI:
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils"
+  },
+  "registries": {
+    "@shad-punk": "https://shad-punk-ui.vercel.app/r/{name}.json"
   }
 }
 ```
@@ -87,7 +92,11 @@ Integrates with shadcn/ui CLI:
 #### Step 2: Install Components
 
 ```bash
-npx shadcn@latest add button card input
+# Install all components
+npx shadcn@latest add @shad-punk/all
+
+# Or install individual components
+npx shadcn@latest add @shad-punk/button @shad-punk/card @shad-punk/input
 ```
 
 ---
