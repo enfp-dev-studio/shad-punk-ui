@@ -2,22 +2,30 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogTrigger } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Progress } from "@/components/ui/progress";
-import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ThemeSwitcher } from "@/components/ui/theme-switcher";
-import { Terminal, Cpu, Shield, Activity, Lock, AlertTriangle, CheckCircle, Github, Zap, Code, Database, Network, HardDrive, Server, Copy, Check, Play } from "lucide-react";
+import {
+  Terminal as TerminalIcon,
+  Cpu,
+  Shield,
+  Rocket,
+  Code,
+  Copy,
+  Check,
+  Github,
+  ArrowRight,
+  Sparks,
+  Box3dPoint,
+  ColorFilter
+} from "iconoir-react";
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
+
   const copyInstallCommand = () => {
     navigator.clipboard.writeText("npx shadcn@latest add @shad-punk/all");
     setCopied(true);
@@ -25,339 +33,253 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background p-2 sm:p-3">
-      <div className="absolute inset-0 effect-scanline pointer-events-none" />
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Scanline Effect */}
+      <div className="absolute inset-0 effect-scanline pointer-events-none z-10" />
 
-      <div className="relative max-w-[1800px] mx-auto space-y-2 sm:space-y-3">
-        <header className="flex items-center justify-between p-2 sm:p-3 border-b border-primary/30">
-          <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-            <Terminal className="text-secondary" size={20} />
-            <h1 className="font-mono text-lg sm:text-2xl font-bold tracking-wider text-primary">Shad-Punk/ui</h1>
-            <span className="font-mono text-xs text-primary/50 ml-1 sm:ml-2 hidden sm:inline">v1.0.0</span>
+      {/* Background Grid */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: `
+          linear-gradient(rgba(var(--glow-secondary-rgb), 0.5) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(var(--glow-secondary-rgb), 0.5) 1px, transparent 1px)
+        `,
+        backgroundSize: '60px 60px'
+      }} />
+
+      {/* Glow Orbs */}
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-secondary/10 blur-[120px] pointer-events-none" />
+
+      {/* Main Content */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Header */}
+        <header className="flex items-center justify-between py-6 border-b border-primary/20">
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="p-2 bg-primary/10 rounded-lg border border-primary/30 group-hover:border-primary/50 transition-colors">
+              <TerminalIcon className="text-primary" width={24} height={24} />
+            </div>
+            <div>
+              <h1 className="font-mono text-xl font-bold text-foreground">Shad-Punk</h1>
+              <span className="font-mono text-xs text-muted-foreground">v1.0.0</span>
+            </div>
           </Link>
-          <div className="flex gap-2 items-center">
+
+          <div className="flex gap-3 items-center">
             <ThemeSwitcher />
-            <Button size="sm" className="hidden sm:inline-flex" asChild onClick={() => router.push('/docs')}>
+            <Button size="sm" className="hidden sm:inline-flex" onClick={() => router.push('/docs')}>
               Docs
             </Button>
-            <Button size="sm" className="" asChild onClick={() => router.push('/docs/components')}>
-              Components
-            </Button>
             <Button size="sm" onClick={() => window.open("https://github.com/enfp-dev-studio/shad-punk-ui", "_blank")}>
-              <Github size={14} />
+              <Github width={16} height={16} />
             </Button>
           </div>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 sm:gap-3" id="components">
-          <div className="lg:col-span-3 space-y-2 sm:space-y-3">
+        {/* Hero Section */}
+        <section className="py-20 lg:py-32 text-center">
+          <div className="space-y-8">
+            {/* Badge */}
+            <div className="flex justify-center">
+              <Badge className="px-4 py-2 text-sm">
+                <Sparks width={14} height={14} className="mr-2" />
+                Mech Combat UI Components
+              </Badge>
+            </div>
 
-            <Card>
+            {/* Title */}
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-mono font-bold tracking-tight">
+              <span className="text-foreground">Build </span>
+              <span className="text-primary">Cyberpunk</span>
+              <br />
+              <span className="text-foreground">Interfaces</span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="max-w-2xl mx-auto text-lg sm:text-xl text-muted-foreground font-mono">
+              Armored Core & Edgerunners inspired UI components for Next.js.
+              <br className="hidden sm:block" />
+              Scanlines, HUD effects, and tactical aesthetics.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+              <Button size="lg" className="text-lg px-8" onClick={() => router.push('/docs')}>
+                Get Started
+                <ArrowRight width={20} height={20} className="ml-2" />
+              </Button>
+              <Button
+                size="lg"
+                variant="destructive"
+                className="text-lg px-8 font-mono"
+                onClick={() => router.push('/docs/components')}
+              >
+                View Components
+              </Button>
+            </div>
+
+            {/* Install Command */}
+            <div className="flex justify-center pt-8">
+              <div
+                className="flex items-center gap-3 px-6 py-4 bg-card/50 backdrop-blur-sm rounded-lg border border-primary/30 cursor-pointer hover:border-primary/50 transition-all group"
+                onClick={copyInstallCommand}
+              >
+                <code className="font-mono text-sm sm:text-base text-primary">
+                  npx shadcn@latest add @shad-punk/all
+                </code>
+                <button className="p-2 rounded bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                  {copied ? (
+                    <Check width={16} height={16} className="text-primary" />
+                  ) : (
+                    <Copy width={16} height={16} className="text-primary" />
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-20 border-t border-primary/20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="group hover:border-primary/50 transition-all">
               <CardHeader>
-                <CardTitle className="text-sm sm:text-base"><Terminal className="inline mr-1" size={14} />Components</CardTitle>
-                <CardDescription className="text-xs">UI Library Demo</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-1 text-xs">
-                  <div className="flex justify-between"><span>Cards</span><Badge>✓</Badge></div>
-                  <div className="flex justify-between"><span>Tables</span><Badge>✓</Badge></div>
-                  <div className="flex justify-between"><span>Inputs</span><Badge>✓</Badge></div>
-                  <div className="flex justify-between"><span>Dialogs</span><Badge>✓</Badge></div>
-                  <div className="flex justify-between"><span>Tabs</span><Badge>✓</Badge></div>
-                  <div className="flex justify-between"><span>Alerts</span><Badge>✓</Badge></div>
+                <div className="p-3 w-fit bg-primary/10 rounded-lg mb-4 group-hover:bg-primary/20 transition-colors">
+                  <Box3dPoint width={28} height={28} className="text-primary" />
                 </div>
-              </CardContent>
-              <CardFooter>
-                <Button size="sm" asChild onClick={() => router.push('/docs/components')}>
-                  View All
-                </Button>
-              </CardFooter>
+                <CardTitle>23+ Components</CardTitle>
+                <CardDescription>
+                  Cards, Buttons, Dialogs, Tables, Tabs, and more. All styled with cyberpunk aesthetics.
+                </CardDescription>
+              </CardHeader>
             </Card>
 
-            <Card>
+            <Card className="group hover:border-primary/50 transition-all">
               <CardHeader>
-                <CardTitle className="text-sm sm:text-base"><Shield className="inline mr-1" size={14} />Install</CardTitle>
-                <CardDescription className="text-xs">Add any component</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="p-2 bg-background/40 rounded text-xs border border-primary/30 font-mono overflow-x-auto">
-                  <pre className="text-primary">npx shadcn@latest add{'\n'}@shad-punk/all</pre>
+                <div className="p-3 w-fit bg-primary/10 rounded-lg mb-4 group-hover:bg-primary/20 transition-colors">
+                  <ColorFilter width={28} height={28} className="text-primary" />
                 </div>
-              </CardContent>
-              <CardFooter>
-                <Button size="sm" onClick={copyInstallCommand}>
-                  {copied ? <Check size={14} className="mr-1" /> : <Copy size={14} className="mr-1" />}
-                  {copied ? "Copied" : "Copy"}
-                </Button>
-              </CardFooter>
+                <CardTitle>Dual Themes</CardTitle>
+                <CardDescription>
+                  Edgerunners (neon pink/cyan) and Armored Core (tactical orange/green) themes included.
+                </CardDescription>
+              </CardHeader>
             </Card>
 
-
-            <Alert>
-              <CheckCircle size={14} />
-              <AlertTitle className="text-sm">Ready to use</AlertTitle>
-              <AlertDescription className="text-xs">Copy paste components</AlertDescription>
-            </Alert>
-
-            <Alert variant="destructive">
-              <AlertTriangle size={14} />
-              <AlertTitle className="text-sm">Example Alert</AlertTitle>
-              <AlertDescription className="text-xs">Destructive variant demo</AlertDescription>
-            </Alert>
-
-            <Card className="hidden lg:block">
+            <Card className="group hover:border-primary/50 transition-all">
               <CardHeader>
-                <CardTitle className="text-sm"><Database className="inline mr-1" size={14} />System Info</CardTitle>
+                <div className="p-3 w-fit bg-primary/10 rounded-lg mb-4 group-hover:bg-primary/20 transition-colors">
+                  <Cpu width={28} height={28} className="text-primary" />
+                </div>
+                <CardTitle>shadcn Compatible</CardTitle>
+                <CardDescription>
+                  Works with shadcn/ui CLI. Just add the registry and install any component.
+                </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-2 text-xs">
-                <div className="flex justify-between"><span>Node</span><span className="text-primary">v20.11.0</span></div>
-                <div className="flex justify-between"><span>React</span><span className="text-primary">v18.3.1</span></div>
-                <div className="flex justify-between"><span>Next</span><span className="text-primary">v15.0.3</span></div>
-                <div className="flex justify-between"><span>Tailwind</span><span className="text-primary">v3.4.1</span></div>
-              </CardContent>
             </Card>
           </div>
+        </section>
 
-          <div className="lg:col-span-6 space-y-2 sm:space-y-3">
+        {/* Component Preview Section */}
+        <section className="py-20 border-t border-primary/20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-mono font-bold text-foreground mb-4">
+              Component Preview
+            </h2>
+            <p className="text-muted-foreground font-mono">
+              Interactive components with HUD effects
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Buttons Preview */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-sm sm:text-base"><Cpu className="inline mr-1" size={14} />Progress Demo</CardTitle>
-                <CardDescription className="text-xs">Animated bars</CardDescription>
+                <CardTitle className="text-sm font-mono">Buttons</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-2">
-                <div className="flex justify-between text-xs"><span>Example</span><span>82%</span></div>
-                <Progress value={82} />
-                <div className="flex justify-between text-xs"><span>Loading</span><span>45%</span></div>
-                <Progress value={45} />
-                <div className="flex justify-between text-xs"><span>Complete</span><span>100%</span></div>
-                <Progress value={100} />
+              <CardContent className="flex flex-wrap gap-3">
+                <Button>Default</Button>
+                <Button variant="destructive">Destructive</Button>
+                <Button size="sm">Small</Button>
+                <Button size="lg">Large</Button>
               </CardContent>
-              <CardFooter><Button size="sm" onClick={() => window.location.reload()}>Refresh</Button></CardFooter>
             </Card>
 
-            <div className="space-y-2">
-              <Input placeholder="$ input component demo..." />
-              <Input placeholder="$ another example input..." />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <Input placeholder="$ user@host" />
-                <Input placeholder="$ password" type="password" />
-              </div>
-              <div className="space-y-1">
-                <div className="flex justify-between text-xs text-primary"><span>Progress bar</span><span>73%</span></div>
-                <Progress value={73} />
-              </div>
-            </div>
+            {/* Badges Preview */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-sm font-mono">Badges</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-wrap gap-3">
+                <Badge>Default</Badge>
+                <Badge variant="destructive">Alert</Badge>
+                <Badge><Shield width={12} height={12} className="mr-1" />Secure</Badge>
+                <Badge><Rocket width={12} height={12} className="mr-1" />Deploy</Badge>
+              </CardContent>
+            </Card>
 
-            <Tabs defaultValue="sys">
-              <TabsList className="w-full">
-                <TabsTrigger value="sys" className="flex-1">Tabs</TabsTrigger>
-                <TabsTrigger value="net" className="flex-1">Example</TabsTrigger>
-                <TabsTrigger value="log" className="flex-1">Demo</TabsTrigger>
-                <TabsTrigger value="test" className="flex-1">Test</TabsTrigger>
-              </TabsList>
-              <TabsContent value="sys" className="pt-2">
-                <Card>
-                  <CardContent className="pt-4"><p className="text-xs text-foreground/80">Tab component showcase</p></CardContent>
-                </Card>
-              </TabsContent>
-              <TabsContent value="net" className="pt-2">
-                <Card>
-                  <CardContent className="pt-4"><p className="text-xs text-foreground/80">Switch between tabs</p></CardContent>
-                </Card>
-              </TabsContent>
-              <TabsContent value="log" className="pt-2">
-                <Card>
-                  <CardContent className="pt-4"><p className="text-xs text-foreground/80">Terminal styled tabs</p></CardContent>
-                </Card>
-              </TabsContent>
-              <TabsContent value="test" className="pt-2">
-                <Card>
-                  <CardContent className="pt-4"><p className="text-xs text-foreground/80">Additional tab content</p></CardContent>
-                </Card>
-              </TabsContent>
-            </Tabs>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-sm"><Network className="inline mr-1" size={14} />Network</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-1 text-xs">
-                  <div className="flex justify-between"><span>Latency</span><Badge>12ms</Badge></div>
-                  <div className="flex justify-between"><span>Bandwidth</span><Badge>1.2GB/s</Badge></div>
-                  <div className="flex justify-between"><span>Packets</span><Badge>847K</Badge></div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-sm"><HardDrive className="inline mr-1" size={14} />Storage</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-1 text-xs">
-                  <div className="flex justify-between"><span>Used</span><Badge>342GB</Badge></div>
-                  <div className="flex justify-between"><span>Free</span><Badge>658GB</Badge></div>
-                  <div className="flex justify-between"><span>Total</span><Badge>1TB</Badge></div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              <Button size="sm">Button</Button>
-              <Button size="sm" variant="destructive">Alert</Button>
-              <Button size="sm">Action</Button>
-              <Button size="sm">Execute</Button>
-              <Dialog>
-                <DialogTrigger asChild><Button size="sm">Modal</Button></DialogTrigger>
-                <DialogContent className="max-w-[95vw] sm:max-w-[425px]">
-                  <DialogHeader>
-                    <DialogTitle className="text-sm sm:text-base">Dialog Component</DialogTitle>
-                    <DialogDescription className="text-xs">Example modal window</DialogDescription>
-                  </DialogHeader>
-                  <div className="space-y-2">
-                    <div className="p-2 bg-background/40 rounded text-xs border border-primary/30">
-                      <p className="text-secondary">$ component.render()</p>
+            {/* Cards Preview */}
+            <Card className="lg:col-span-2">
+              <CardHeader>
+                <CardTitle className="text-sm font-mono">Cards with HUD Effects</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="p-4 bg-background/50 rounded border border-primary/30 space-y-2">
+                    <div className="flex justify-between text-xs font-mono">
+                      <span className="text-muted-foreground">CPU</span>
+                      <span className="text-primary">42%</span>
                     </div>
-                    <Input placeholder="demo input..." />
+                    <div className="h-2 bg-muted rounded-full overflow-hidden">
+                      <div className="h-full w-[42%] bg-primary rounded-full" />
+                    </div>
                   </div>
-                  <DialogFooter className="flex-col sm:flex-row gap-2">
-                    <Button size="sm" variant="destructive" className="w-full sm:w-auto">Cancel</Button>
-                    <Button size="sm" className="w-full sm:w-auto">Confirm</Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-              <Button size="sm">Process</Button>
-              <Button size="sm">Run</Button>
-              <Badge>Badge</Badge>
-              <Badge variant="destructive">Error</Badge>
-              <Badge><Activity size={10} className="mr-1" />Live</Badge>
-              <Badge><Zap size={10} className="mr-1" />Fast</Badge>
-              <Badge><Code size={10} className="mr-1" />Code</Badge>
-            </div>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm">Terminal Output</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-1">
-                <div className="p-2 bg-background/40 rounded text-xs border border-primary/30 font-mono overflow-x-auto">
-                  <p className="text-secondary">$ npx shadcn add @shad-punk/button</p>
-                  <p className="text-muted-foreground">Installing dependencies...</p>
-                  <p className="text-primary">✓ Installed 12 packages</p>
+                  <div className="p-4 bg-background/50 rounded border border-primary/30 space-y-2">
+                    <div className="flex justify-between text-xs font-mono">
+                      <span className="text-muted-foreground">Memory</span>
+                      <span className="text-primary">68%</span>
+                    </div>
+                    <div className="h-2 bg-muted rounded-full overflow-hidden">
+                      <div className="h-full w-[68%] bg-primary rounded-full" />
+                    </div>
+                  </div>
+                  <div className="p-4 bg-background/50 rounded border border-primary/30 space-y-2">
+                    <div className="flex justify-between text-xs font-mono">
+                      <span className="text-muted-foreground">Network</span>
+                      <span className="text-primary">89%</span>
+                    </div>
+                    <div className="h-2 bg-muted rounded-full overflow-hidden">
+                      <div className="h-full w-[89%] bg-primary rounded-full" />
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
           </div>
 
-          <div className="lg:col-span-3 space-y-2 sm:space-y-3">
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="text-xs">Component</TableHead>
-                    <TableHead className="text-xs">Status</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell className="text-xs">Cards</TableCell>
-                    <TableCell><Badge>Ready</Badge></TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="text-xs">Buttons</TableCell>
-                    <TableCell><Badge>Ready</Badge></TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="text-xs">Alerts</TableCell>
-                    <TableCell><Badge variant="destructive">Demo</Badge></TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="text-xs">Tables</TableCell>
-                    <TableCell><Badge>Ready</Badge></TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="text-xs">Dialogs</TableCell>
-                    <TableCell><Badge>Ready</Badge></TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="text-xs">Inputs</TableCell>
-                    <TableCell><Badge>Ready</Badge></TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="text-xs">Progress</TableCell>
-                    <TableCell><Badge>Ready</Badge></TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="text-xs">Tabs</TableCell>
-                    <TableCell><Badge>Ready</Badge></TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </div>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm"><Server className="inline mr-1" size={14} />Resources</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <div className="space-y-1">
-                  <div className="flex justify-between text-xs"><span>CPU Usage</span><span>42%</span></div>
-                  <Progress value={42} />
-                </div>
-                <div className="space-y-1">
-                  <div className="flex justify-between text-xs"><span>Memory</span><span>68%</span></div>
-                  <Progress value={68} />
-                </div>
-                <div className="space-y-1">
-                  <div className="flex justify-between text-xs"><span>Disk I/O</span><span>31%</span></div>
-                  <Progress value={31} />
-                </div>
-              </CardContent>
-            </Card>
-
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm sm:text-base"><Code className="inline mr-1" size={14} />Features</CardTitle>
-                <CardDescription className="text-xs">Terminal styling</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-1 text-xs">
-                  <div className="flex items-center gap-1"><Lock size={12} className="text-secondary" /><span>Cyberpunk theme</span></div>
-                  <div className="flex items-center gap-1"><Activity size={12} className="text-primary" /><span>React ready</span></div>
-                  <div className="flex items-center gap-1"><Zap size={12} className="text-accent" /><span>Fast rendering</span></div>
-                  <div className="flex items-center gap-1"><Code size={12} className="text-secondary" /><span>TypeScript</span></div>
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button size="sm" onClick={() => window.open("https://github.com/enfp-dev-studio/shad-punk-ui", "_blank")}>
-                  GitHub
-                </Button>
-              </CardFooter>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm">Quick Stats</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-1 text-xs">
-                <div className="flex justify-between"><span>Build Time</span><span className="text-primary">2.4s</span></div>
-                <div className="flex justify-between"><span>Bundle Size</span><span className="text-primary">142KB</span></div>
-                <div className="flex justify-between"><span>Components</span><span className="text-primary">12</span></div>
-                <div className="flex justify-between"><span>Downloads</span><span className="text-primary">1.2K</span></div>
-              </CardContent>
-            </Card>
-
-
+          {/* View All Button */}
+          <div className="text-center mt-12">
+            <Button size="lg" onClick={() => router.push('/docs/components')}>
+              View All Components
+              <ArrowRight width={20} height={20} className="ml-2" />
+            </Button>
           </div>
+        </section>
 
-          <div className="col-span-1 lg:col-span-12">
-            <footer className="text-end py-3">
-              <p className="font-mono text-xs text-primary/70">
-                Made with ❤️ by <a href="https://github.com/enfp-dev-studio" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-secondary">enfp-dev-studio</a>
-              </p>
-            </footer>
-          </div>
-        </div>
+        {/* Footer */}
+        <footer className="py-12 border-t border-primary/20 text-center">
+          <p className="font-mono text-sm text-muted-foreground">
+            Made with ❤️ by{" "}
+            <a
+              href="https://github.com/enfp-dev-studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-secondary transition-colors"
+            >
+              enfp-dev-studio
+            </a>
+          </p>
+        </footer>
       </div>
     </div>
   );
