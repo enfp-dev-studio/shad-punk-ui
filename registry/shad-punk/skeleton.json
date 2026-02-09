@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "scanline-overlay",
+  "name": "skeleton",
   "type": "registry:ui",
   "dependencies": [
     "clsx",
@@ -9,14 +9,14 @@
   ],
   "devDependencies": [],
   "registryDependencies": [
-    "@glitchcn/globals"
+    "@shad-punk/globals"
   ],
   "files": [
     {
-      "path": "components/ui/scanline-overlay.tsx",
-      "content": "import { cn } from \"@/lib/utils\"\n\nfunction ScanlineOverlay({ className }: { className?: string }) {\n  return (\n    <div\n      aria-hidden=\"true\"\n      className={cn(\"effect-scanline-inner\", className)}\n    />\n  )\n}\n\nexport { ScanlineOverlay }\n",
+      "path": "components/ui/skeleton.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      className={cn(\n        \"animate-pulse\",\n        \"bg-primary/5 border border-primary/20\",\n        \"shadow-[inset_0_1px_0_0_rgba(var(--glow-rgb),0.08)]\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n",
       "type": "registry:ui",
-      "target": "components/ui/scanline-overlay.tsx"
+      "target": "components/ui/skeleton.tsx"
     },
     {
       "path": "lib/utils.ts",

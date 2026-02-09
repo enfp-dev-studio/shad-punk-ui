@@ -3,8 +3,8 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Glitchcn/ui",
-  description: "Dual-theme cyberpunk UI component library — Edgerunners + Armored Core",
+  title: "Shad-Punk/ui",
+  description: "Mech combat & cyberpunk UI component library — Edgerunners + Armored Core",
   icons: {
     icon: '/favicon.svg'
   }

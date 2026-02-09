@@ -2,8 +2,8 @@ import fs from "fs";
 import path from "path";
 
 // ─── Config ───────────────────────────────────────────────
-const SCOPE = "@glitchcn";
-const REGISTRY_URL = "https://glitchcn-ui.vercel.app/r";
+const SCOPE = "@shad-punk";
+const REGISTRY_URL = "https://shad-punk-ui.vercel.app/r";
 const BASE_DEPS = ["clsx", "tailwind-merge", "lucide-react"];
 const SKIP_IMPORTS = new Set([
   "react",
@@ -17,7 +17,7 @@ const ROOT = process.cwd();
 const COMPONENTS_DIR = path.join(ROOT, "components", "ui");
 const HOOKS_DIR = path.join(ROOT, "hooks");
 const LIB_DIR = path.join(ROOT, "lib");
-const REGISTRY_OUT = path.join(ROOT, "registry", "glitchcn");
+const REGISTRY_OUT = path.join(ROOT, "registry", "shad-punk");
 const PUBLIC_OUT = path.join(ROOT, "public", "r");
 const INDEX_OUT = path.join(ROOT, "registry", "index.json");
 
@@ -37,7 +37,7 @@ interface RegistryItem {
   devDependencies: string[];
   registryDependencies: string[];
   files: RegistryFile[];
-  tailwind?: { config: { theme: { extend: Record<string, unknown> } } };
+  tailwind?: {config: {theme: {extend: Record<string, unknown>}}};
   meta?: Record<string, string>;
   docs?: string;
 }
@@ -112,7 +112,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "My App",
-  description: "Powered by glitchcn/ui",
+  description: "Powered by shad-punk-ui",
 };
 
 export default function RootLayout({
@@ -145,9 +145,12 @@ export default function RootLayout({
 `;
 
 // ─── Generators ───────────────────────────────────────────
-function generateComponentJson(componentName: string, filePath: string): RegistryItem {
+function generateComponentJson(
+  componentName: string,
+  filePath: string,
+): RegistryItem {
   const content = fs.readFileSync(filePath, "utf8");
-  const { npmDeps, registryDeps, extraFiles } = parseImports(filePath);
+  const {npmDeps, registryDeps, extraFiles} = parseImports(filePath);
   const utilsContent = fs.readFileSync(path.join(LIB_DIR, "utils.ts"), "utf8");
   const fileName = path.basename(filePath);
 
@@ -173,12 +176,15 @@ function generateComponentJson(componentName: string, filePath: string): Registr
       },
       ...extraFiles,
     ],
-    tailwind: { config: { theme: { extend: {} } } },
+    tailwind: {config: {theme: {extend: {}}}},
   };
 }
 
 function generateGlobalsJson(): RegistryItem {
-  const cssContent = fs.readFileSync(path.join(ROOT, "app", "globals.css"), "utf8");
+  const cssContent = fs.readFileSync(
+    path.join(ROOT, "app", "globals.css"),
+    "utf8",
+  );
 
   return {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -247,24 +253,24 @@ function generateIndex(allItems: RegistryItem[]) {
   const components: IndexEntry[] = allItems.map((item) => ({
     name: item.name,
     type: item.type,
-    files: [`glitchcn/${item.name}.json`],
+    files: [`shad-punk/${item.name}.json`],
   }));
 
   return {
-    name: "glitchcn",
+    name: "shad-punk",
     type: "registry:style",
     registryUrl: REGISTRY_URL,
-    description: "Dual-theme cyberpunk component library",
-    author: "woustachemax",
+    description: "Mech combat & cyberpunk UI component library",
+    author: "enfp-dev-studio",
     scope: SCOPE,
-    styles: [{ name: "glitchcn", label: "GlitchCN" }],
+    styles: [{name: "shad-punk", label: "Shad-Punk"}],
     components,
   };
 }
 
 // ─── Write Helper ─────────────────────────────────────────
 function writeJson(dir: string, name: string, data: unknown) {
-  fs.mkdirSync(dir, { recursive: true });
+  fs.mkdirSync(dir, {recursive: true});
   const filePath = path.join(dir, `${name}.json`);
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
@@ -273,14 +279,16 @@ function writeJson(dir: string, name: string, data: unknown) {
 function main() {
   console.log("Generating registry...\n");
 
-  fs.mkdirSync(REGISTRY_OUT, { recursive: true });
-  fs.mkdirSync(PUBLIC_OUT, { recursive: true });
+  fs.mkdirSync(REGISTRY_OUT, {recursive: true});
+  fs.mkdirSync(PUBLIC_OUT, {recursive: true});
 
   const allItems: RegistryItem[] = [];
   const componentNames: string[] = [];
 
   // 1. Component JSONs
-  const files = fs.readdirSync(COMPONENTS_DIR).filter((f: string) => f.endsWith(".tsx"));
+  const files = fs
+    .readdirSync(COMPONENTS_DIR)
+    .filter((f: string) => f.endsWith(".tsx"));
 
   for (const file of files) {
     const name = file.replace(".tsx", "");
@@ -291,7 +299,9 @@ function main() {
     writeJson(PUBLIC_OUT, name, item);
     allItems.push(item);
     componentNames.push(name);
-    console.log(`  [ui] ${name} (npm: ${item.dependencies.length}, registry: ${item.registryDependencies.length})`);
+    console.log(
+      `  [ui] ${name} (npm: ${item.dependencies.length}, registry: ${item.registryDependencies.length})`,
+    );
   }
 
   // 2. globals.json

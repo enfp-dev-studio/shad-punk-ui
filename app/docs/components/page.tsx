@@ -9,14 +9,14 @@ import { useState } from "react";
 const components = [
   "accordion", "alert", "badge", "button", "card", "checkbox", "command", "dialog", "input-otp",
   "input", "progress", "separator", "sheet", "sidebar",
-  "skeleton","spinner", "table", "tabs", "tooltip"
+  "skeleton", "spinner", "table", "tabs", "tooltip"
 ];
 
 export default function ComponentsListPage() {
   const [copied, setCopied] = useState<string | null>(null);
 
   const copyInstall = (comp: string) => {
-    navigator.clipboard.writeText(`npx shadcn@latest add @glitchcn/${comp}`);
+    navigator.clipboard.writeText(`npx shadcn@latest add @shad-punk/${comp}`);
     setCopied(comp);
     setTimeout(() => setCopied(null), 2000);
   };
@@ -44,8 +44,8 @@ export default function ComponentsListPage() {
                     {comp}
                   </span>
                 </Link>
-                <Button 
-                  size="sm" 
+                <Button
+                  size="sm"
                   onClick={() => copyInstall(comp)}
                   className="ml-2"
                 >
@@ -54,7 +54,7 @@ export default function ComponentsListPage() {
               </div>
               <div className="bg-black border border-emerald-500/30 rounded p-2">
                 <code className="font-mono text-xs text-emerald-300/80">
-                  npx shadcn@latest add @glitchcn/{comp}
+                  npx shadcn@latest add @shad-punk/{comp}
                 </code>
               </div>
             </CardContent>

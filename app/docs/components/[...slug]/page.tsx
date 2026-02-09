@@ -21,39 +21,39 @@ import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 
-const docs: Record<string, { 
-  title: string; 
-  description: string; 
+const docs: Record<string, {
+  title: string;
+  description: string;
   preview: React.ReactNode;
   code: string;
   dependencies?: string[];
 }> = {
   accordion: {
-  title: "Accordion",
-  description: "Collapsible content sections for organizing information",
-  preview: (
-    <Accordion type="single" collapsible className="w-full">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>System Configuration</AccordionTrigger>
-        <AccordionContent>
-          Network protocols initialized. Security parameters verified.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Data Processing</AccordionTrigger>
-        <AccordionContent>
-          All data streams operating within normal parameters.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>Security Status</AccordionTrigger>
-        <AccordionContent>
-          Encryption active. Firewall enabled. No threats detected.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  ),
-  code: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+    title: "Accordion",
+    description: "Collapsible content sections for organizing information",
+    preview: (
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1">
+          <AccordionTrigger>System Configuration</AccordionTrigger>
+          <AccordionContent>
+            Network protocols initialized. Security parameters verified.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Data Processing</AccordionTrigger>
+          <AccordionContent>
+            All data streams operating within normal parameters.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Security Status</AccordionTrigger>
+          <AccordionContent>
+            Encryption active. Firewall enabled. No threats detected.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    ),
+    code: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 <Accordion type="single" collapsible>
   <AccordionItem value="item-1">
@@ -75,7 +75,7 @@ const docs: Record<string, {
     </AccordionContent>
   </AccordionItem>
 </Accordion>`,
-},
+  },
   alert: {
     title: "Alert",
     description: "Display important messages and notifications",
@@ -207,21 +207,21 @@ const docs: Record<string, {
   dialog: {
     title: "Dialog",
     description: "Modal dialog component",
-   preview: (
-    <Dialog>
-    <DialogTrigger asChild>
-      <Button size="sm">Open Dialog</Button>
-    </DialogTrigger>
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Test Dialog</DialogTitle>
-        <DialogDescription>
-          This is a live preview inside the docs page.
-        </DialogDescription>
-      </DialogHeader>
-    </DialogContent>
-  </Dialog>
-),
+    preview: (
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button size="sm">Open Dialog</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Test Dialog</DialogTitle>
+            <DialogDescription>
+              This is a live preview inside the docs page.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    ),
 
     code: `import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 
@@ -346,7 +346,7 @@ const docs: Record<string, {
           <SheetHeader>
             <SheetTitle>Sheet panel</SheetTitle>
             <SheetDescription>
-              This is the Glitchcn sheet. Put any content you want here.
+              This is the Shad-Punk sheet. Put any content you want here.
             </SheetDescription>
           </SheetHeader>
           <div className="mt-4 text-sm text-emerald-200 font-mono">
@@ -370,7 +370,7 @@ import { Button } from "@/components/ui/button"
     </SheetHeader>
   </SheetContent>
 </Sheet>`,
-},
+  },
   sidebar: {
     title: "Sidebar",
     description: "Navigation sidebar component",
@@ -601,7 +601,7 @@ import { Button } from "@/components/ui/button"
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="outline">Hover me</Button>
+            <Button>Hover me</Button>
           </TooltipTrigger>
           <TooltipContent>
             <p>Tooltip text</p>
@@ -691,10 +691,10 @@ export default function ComponentPage({
         </CardHeader>
         <CardContent>
           <div className="relative">
-            <CopyButton text={`npx shadcn@latest add @glitchcn/${componentName}`} />
+            <CopyButton text={`npx shadcn@latest add @shad-punk/${componentName}`} />
             <pre className="bg-black/60 p-3 pr-10 sm:p-4 sm:pr-12 rounded border border-emerald-500/20 overflow-x-auto">
               <code className="text-emerald-300 font-mono text-xs sm:text-sm break-all">
-                npx shadcn@latest add @glitchcn/{componentName}
+                npx shadcn@latest add @shad-punk/{componentName}
               </code>
             </pre>
           </div>

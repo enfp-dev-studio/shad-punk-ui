@@ -10,7 +10,7 @@
   ],
   "devDependencies": [],
   "registryDependencies": [
-    "@glitchcn/globals"
+    "@shad-punk/globals"
   ],
   "files": [
     {

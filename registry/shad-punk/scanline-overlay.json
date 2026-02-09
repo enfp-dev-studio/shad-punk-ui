@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "corner-brackets",
+  "name": "scanline-overlay",
   "type": "registry:ui",
   "dependencies": [
     "clsx",
@@ -9,14 +9,14 @@
   ],
   "devDependencies": [],
   "registryDependencies": [
-    "@glitchcn/globals"
+    "@shad-punk/globals"
   ],
   "files": [
     {
-      "path": "components/ui/corner-brackets.tsx",
-      "content": "import { cn } from \"@/lib/utils\"\n\nfunction CornerBrackets({ className }: { className?: string }) {\n  return (\n    <div\n      aria-hidden=\"true\"\n      className={cn(\"effect-corner-inner\", className)}\n    />\n  )\n}\n\nexport { CornerBrackets }\n",
+      "path": "components/ui/scanline-overlay.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\nfunction ScanlineOverlay({ className }: { className?: string }) {\n  return (\n    <div\n      aria-hidden=\"true\"\n      className={cn(\"effect-scanline-inner\", className)}\n    />\n  )\n}\n\nexport { ScanlineOverlay }\n",
       "type": "registry:ui",
-      "target": "components/ui/corner-brackets.tsx"
+      "target": "components/ui/scanline-overlay.tsx"
     },
     {
       "path": "lib/utils.ts",

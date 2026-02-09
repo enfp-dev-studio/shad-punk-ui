@@ -9,8 +9,8 @@
   ],
   "devDependencies": [],
   "registryDependencies": [
-    "@glitchcn/globals",
-    "@glitchcn/scanline-overlay"
+    "@shad-punk/globals",
+    "@shad-punk/scanline-overlay"
   ],
   "files": [
     {

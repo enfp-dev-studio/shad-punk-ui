@@ -19,6 +19,6 @@
     "hooks": "@/hooks"
   },
   "registries": {
-    "@glitchcn": "https://glitchcn-ui.vercel.app/r/{name}.json"
+    "@shad-punk": "https://shad-punk-ui.vercel.app/r/{name}.json"
   }
 }

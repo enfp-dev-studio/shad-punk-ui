@@ -11,11 +11,11 @@
   ],
   "devDependencies": [],
   "registryDependencies": [
-    "@glitchcn/globals",
-    "@glitchcn/button",
-    "@glitchcn/input",
-    "@glitchcn/separator",
-    "@glitchcn/skeleton"
+    "@shad-punk/globals",
+    "@shad-punk/button",
+    "@shad-punk/input",
+    "@shad-punk/separator",
+    "@shad-punk/skeleton"
   ],
   "files": [
     {

@@ -18,9 +18,8 @@ import { useRouter } from 'next/navigation';
 export default function Home() {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
-  const [videoOpen, setVideoOpen] = useState(false)
   const copyInstallCommand = () => {
-    navigator.clipboard.writeText("npx shadcn@latest add @glitchcn/all");
+    navigator.clipboard.writeText("npx shadcn@latest add @shad-punk/all");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -33,18 +32,18 @@ export default function Home() {
         <header className="flex items-center justify-between p-2 sm:p-3 border-b border-primary/30">
           <Link href="/" className="flex items-center gap-2 group cursor-pointer">
             <Terminal className="text-secondary" size={20} />
-            <h1 className="font-mono text-lg sm:text-2xl font-bold tracking-wider text-primary">Glitchcn/ui</h1>
+            <h1 className="font-mono text-lg sm:text-2xl font-bold tracking-wider text-primary">Shad-Punk/ui</h1>
             <span className="font-mono text-xs text-primary/50 ml-1 sm:ml-2 hidden sm:inline">v1.0.0</span>
           </Link>
           <div className="flex gap-2 items-center">
             <ThemeSwitcher />
-            <Button size="sm" className="hidden sm:inline-flex" asChild onClick={()=>router.push('/docs')}>
+            <Button size="sm" className="hidden sm:inline-flex" asChild onClick={() => router.push('/docs')}>
               Docs
             </Button>
-            <Button size="sm" className="" asChild onClick={()=>router.push('/docs/components')}>
+            <Button size="sm" className="" asChild onClick={() => router.push('/docs/components')}>
               Components
             </Button>
-            <Button size="sm" onClick={() => window.open("https://github.com/woustachemax/glitchcn-ui", "_blank")}>
+            <Button size="sm" onClick={() => window.open("https://github.com/enfp-dev-studio/shad-punk-ui", "_blank")}>
               <Github size={14} />
             </Button>
           </div>
@@ -52,15 +51,6 @@ export default function Home() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 sm:gap-3" id="components">
           <div className="lg:col-span-3 space-y-2 sm:space-y-3">
-            <Card className="cursor-pointer transition-all" onClick={() => setVideoOpen(true)}>
-              <CardHeader>
-                <CardTitle className="text-sm sm:text-base flex items-center gap-2"><Play className="inline" size={14} />Featured</CardTitle>
-                <CardDescription className="text-xs">YouTube showcase</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-xs text-foreground/80">We just got featured in a YouTube video! Click to watch.</p>
-              </CardContent>
-            </Card>
 
             <Card>
               <CardHeader>
@@ -78,7 +68,7 @@ export default function Home() {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button size="sm" asChild onClick={()=>router.push('/docs/components')}>
+                <Button size="sm" asChild onClick={() => router.push('/docs/components')}>
                   View All
                 </Button>
               </CardFooter>
@@ -91,7 +81,7 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <div className="p-2 bg-background/40 rounded text-xs border border-primary/30 font-mono overflow-x-auto">
-                  <pre className="text-primary">npx shadcn@latest add{'\n'}@glitchcn/all</pre>
+                  <pre className="text-primary">npx shadcn@latest add{'\n'}@shad-punk/all</pre>
                 </div>
               </CardContent>
               <CardFooter>
@@ -250,7 +240,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="space-y-1">
                 <div className="p-2 bg-background/40 rounded text-xs border border-primary/30 font-mono overflow-x-auto">
-                  <p className="text-secondary">$ npm install glitchcn</p>
+                  <p className="text-secondary">$ npx shadcn add @shad-punk/button</p>
                   <p className="text-muted-foreground">Installing dependencies...</p>
                   <p className="text-primary">✓ Installed 12 packages</p>
                 </div>
@@ -339,7 +329,7 @@ export default function Home() {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button size="sm" onClick={() => window.open("https://github.com/woustachemax/glitchcn", "_blank")}>
+                <Button size="sm" onClick={() => window.open("https://github.com/enfp-dev-studio/shad-punk-ui", "_blank")}>
                   GitHub
                 </Button>
               </CardFooter>
@@ -357,32 +347,13 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
-              <DialogContent className="max-w-[95vw] sm:max-w-2xl p-0 gap-0">
-                <DialogHeader className="p-4 border-b border-primary/30">
-                  <DialogTitle>Glitchcn Featured on YouTube</DialogTitle>
-                  <DialogDescription className="text-xs">Watch our showcase video</DialogDescription>
-                </DialogHeader>
-                <div className="relative w-full aspect-video bg-background">
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    src="https://www.youtube.com/embed/15ZVQVlNR-o?si=XO9saWhYz9CRsn1w"
-                    title="Glitchcn UI Showcase"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="rounded-b-lg"
-                  />
-                </div>
-              </DialogContent>
-            </Dialog>
+
           </div>
 
           <div className="col-span-1 lg:col-span-12">
             <footer className="text-end py-3">
               <p className="font-mono text-xs text-primary/70">
-                  Made without '$$' by <a href="https://www.siddharththakkar.xyz/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-secondary">woustachemax</a>
+                Made with ❤️ by <a href="https://github.com/enfp-dev-studio" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-secondary">enfp-dev-studio</a>
               </p>
             </footer>
           </div>

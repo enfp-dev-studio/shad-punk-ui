@@ -29,7 +29,7 @@ import { Button } from "@/components/ui/button";
 const components = [
   "accordion",
   "alert",
-  "badge", 
+  "badge",
   "checkbox",
   "button",
   "card",
@@ -96,20 +96,20 @@ export default function DocsLayout({
       <header className="lg:hidden sticky top-0 z-50 flex h-14 items-center justify-between border-b border-emerald-500/30 bg-black px-4">
         <Link href="/" className="flex items-center gap-2">
           <Terminal className="text-cyan-400" size={20} />
-          <span className="font-mono text-lg font-bold text-emerald-300">Glitchcn</span>
+          <span className="font-mono text-lg font-bold text-emerald-300">Shad-Punk</span>
         </Link>
         <div className="flex items-center gap-2">
-          <Button 
-            size="sm" 
-            
+          <Button
+            size="sm"
+
             onClick={() => setSearchOpen(true)}
             className="text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10"
           >
             <Search size={18} />
           </Button>
-          <Button 
-            size="sm" 
-            
+          <Button
+            size="sm"
+
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10"
           >
@@ -125,15 +125,15 @@ export default function DocsLayout({
               <div>
                 <h3 className="font-mono text-sm font-semibold text-emerald-300/70 mb-3">Documentation</h3>
                 <div className="space-y-2">
-                  <Link 
-                    href="/docs" 
+                  <Link
+                    href="/docs"
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center gap-3 px-3 py-2 rounded text-emerald-300 hover:bg-emerald-500/10 transition-colors"
                   >
                     <BookOpen className="h-4 w-4" />
                     <span className="font-mono">Getting Started</span>
                   </Link>
-                  <Link 
+                  <Link
                     href="/docs/components"
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center gap-3 px-3 py-2 rounded text-emerald-300 hover:bg-emerald-500/10 transition-colors"
@@ -171,11 +171,11 @@ export default function DocsLayout({
               <Link href="/" className="flex items-center gap-2 group px-2">
                 <Terminal className="text-cyan-400" size={24} />
                 <span className="font-mono text-xl font-bold text-emerald-300 group-data-[collapsible=icon]:hidden">
-                  Glitchcn
+                  Shad-Punk
                 </span>
               </Link>
             </SidebarHeader>
-            
+
             <SidebarContent className="overflow-x-hidden overflow-y-auto scrollbar-hide">
               <SidebarGroup>
                 <SidebarGroupContent>
@@ -238,7 +238,7 @@ export default function DocsLayout({
               </SidebarGroup>
             </SidebarContent>
           </Sidebar>
-          
+
           <SidebarInset className="bg-black">
             <main className="flex-1 p-8 overflow-x-hidden">
               {children}

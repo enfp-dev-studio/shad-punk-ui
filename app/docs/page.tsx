@@ -30,7 +30,7 @@ export default function GettingStarted() {
     "utils": "@/lib/utils"
   },
   "registries": {
-    "@glitchcn": "https://glitchcn-ui.vercel.app/r/{name}.json"
+    "@shad-punk": "https://shad-punk-ui.vercel.app/r/{name}.json"
   }
 }
 `;
@@ -48,15 +48,15 @@ export default function GettingStarted() {
 
       <Card>
         <CardHeader>
-          <CardTitle>What is GlitchCN?</CardTitle>
+          <CardTitle>What is Shad-Punk?</CardTitle>
           <CardDescription>
-            A terminal-styled cyberpunk component library for Next.js with scanline effects, 
+            A mech combat & cyberpunk styled component library for Next.js with scanline effects,
             glowing borders, and monospace typography.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-emerald-300/70">
-            GlitchCN provides drop-in React components with a distinctive retro-futuristic aesthetic. 
+            Shad-Punk provides drop-in React components with a distinctive retro-futuristic aesthetic.
             All components feature:
           </p>
           <ul className="space-y-2 text-emerald-300/70 list-disc list-inside">
@@ -117,7 +117,7 @@ export default function GettingStarted() {
         <CardHeader>
           <CardTitle>Step 2: Install Components</CardTitle>
           <CardDescription>
-            Use shadcn CLI with the @glitchcn registry
+            Use shadcn CLI with the @shad-punk registry
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -125,7 +125,7 @@ export default function GettingStarted() {
             <p className="text-emerald-300/70 mb-3 font-bold">Install all components:</p>
             <div className="relative">
               <button
-                onClick={() => copy("npx shadcn@latest add @glitchcn/all", "install-all")}
+                onClick={() => copy("npx shadcn@latest add @shad-punk/all", "install-all")}
                 className="absolute top-2 right-2 p-2 rounded bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition-colors z-10"
               >
                 {copied === "install-all" ? (
@@ -136,7 +136,7 @@ export default function GettingStarted() {
               </button>
               <pre className="bg-black/60 p-4 pr-14 rounded border border-emerald-500/20">
                 <code className="text-emerald-300 font-mono text-sm">
-                  npx shadcn@latest add @glitchcn/all
+                  npx shadcn@latest add @shad-punk/all
                 </code>
               </pre>
             </div>
@@ -146,7 +146,7 @@ export default function GettingStarted() {
             <p className="text-emerald-300/70 mb-3 font-bold">Or install individual components:</p>
             <div className="relative">
               <button
-                onClick={() => copy("npx shadcn@latest add @glitchcn/button @glitchcn/card", "install-individual")}
+                onClick={() => copy("npx shadcn@latest add @shad-punk/button @shad-punk/card", "install-individual")}
                 className="absolute top-2 right-2 p-2 rounded bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition-colors z-10"
               >
                 {copied === "install-individual" ? (
@@ -157,7 +157,7 @@ export default function GettingStarted() {
               </button>
               <pre className="bg-black/60 p-4 pr-14 rounded border border-emerald-500/20">
                 <code className="text-emerald-300 font-mono text-sm">
-                  npx shadcn@latest add @glitchcn/button @glitchcn/card
+                  npx shadcn@latest add @shad-punk/button @shad-punk/card
                 </code>
               </pre>
             </div>
@@ -186,7 +186,7 @@ export default function GettingStarted() {
             </button>
             <pre className="bg-black/60 p-4 pr-14 rounded border border-emerald-500/20">
               <code className="text-emerald-300 font-mono text-sm whitespace-pre">
-{`import { Button } from "@/components/ui/button"
+                {`import { Button } from "@/components/ui/button"
 
 export default function Page() {
   return <Button>Click me</Button>
