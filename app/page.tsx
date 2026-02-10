@@ -196,42 +196,42 @@ export default function CockpitPage() {
             {/* Left Instruments - Hologram Style */}
             <div className="flex gap-4">
               <div className="text-center animate-pulse" style={{ animationDuration: '3s' }}>
-                <div className="text-[10px] text-cyan-400/80 font-mono mb-1 tracking-widest">ENG</div>
+                <div className="text-[10px] text-secondary/80 font-mono mb-1 tracking-widest">ENG</div>
                 <div
-                  className="w-12 h-12 rounded border border-cyan-400/60 flex items-center justify-center relative overflow-hidden"
+                  className="w-12 h-12 rounded border border-secondary/60 flex items-center justify-center relative overflow-hidden"
                   style={{
-                    background: 'linear-gradient(180deg, rgba(0,255,255,0.15) 0%, rgba(0,255,255,0.05) 100%)',
-                    boxShadow: '0 0 20px rgba(0,255,255,0.4), inset 0 0 15px rgba(0,255,255,0.1)',
+                    background: 'linear-gradient(180deg, rgba(var(--glow-secondary-rgb),0.15) 0%, rgba(var(--glow-secondary-rgb),0.05) 100%)',
+                    boxShadow: '0 0 20px rgba(var(--glow-secondary-rgb),0.4), inset 0 0 15px rgba(var(--glow-secondary-rgb),0.1)',
                   }}
                 >
-                  <Cpu width={20} height={20} className="text-cyan-400" style={{ filter: 'drop-shadow(0 0 8px rgba(0,255,255,0.8))' }} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/10 to-transparent" />
+                  <Cpu width={20} height={20} className="text-secondary" style={{ filter: 'drop-shadow(0 0 8px rgba(var(--glow-secondary-rgb),0.8))' }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary/10 to-transparent" />
                 </div>
               </div>
               <div className="text-center animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.3s' }}>
-                <div className="text-[10px] text-cyan-400/80 font-mono mb-1 tracking-widest">SYS</div>
+                <div className="text-[10px] text-secondary/80 font-mono mb-1 tracking-widest">SYS</div>
                 <div
-                  className="w-12 h-12 rounded border border-cyan-400/60 flex items-center justify-center relative overflow-hidden"
+                  className="w-12 h-12 rounded border border-secondary/60 flex items-center justify-center relative overflow-hidden"
                   style={{
-                    background: 'linear-gradient(180deg, rgba(0,255,255,0.15) 0%, rgba(0,255,255,0.05) 100%)',
-                    boxShadow: '0 0 20px rgba(0,255,255,0.4), inset 0 0 15px rgba(0,255,255,0.1)',
+                    background: 'linear-gradient(180deg, rgba(var(--glow-secondary-rgb),0.15) 0%, rgba(var(--glow-secondary-rgb),0.05) 100%)',
+                    boxShadow: '0 0 20px rgba(var(--glow-secondary-rgb),0.4), inset 0 0 15px rgba(var(--glow-secondary-rgb),0.1)',
                   }}
                 >
-                  <Settings width={20} height={20} className="text-cyan-400" style={{ filter: 'drop-shadow(0 0 8px rgba(0,255,255,0.8))' }} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/10 to-transparent" />
+                  <Settings width={20} height={20} className="text-secondary" style={{ filter: 'drop-shadow(0 0 8px rgba(var(--glow-secondary-rgb),0.8))' }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary/10 to-transparent" />
                 </div>
               </div>
               <div className="text-center animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.6s' }}>
-                <div className="text-[10px] text-cyan-400/80 font-mono mb-1 tracking-widest">WEP</div>
+                <div className="text-[10px] text-secondary/80 font-mono mb-1 tracking-widest">WEP</div>
                 <div
-                  className="w-12 h-12 rounded border border-cyan-400/60 flex items-center justify-center relative overflow-hidden"
+                  className="w-12 h-12 rounded border border-secondary/60 flex items-center justify-center relative overflow-hidden"
                   style={{
-                    background: 'linear-gradient(180deg, rgba(0,255,255,0.15) 0%, rgba(0,255,255,0.05) 100%)',
-                    boxShadow: '0 0 20px rgba(0,255,255,0.4), inset 0 0 15px rgba(0,255,255,0.1)',
+                    background: 'linear-gradient(180deg, rgba(var(--glow-secondary-rgb),0.15) 0%, rgba(var(--glow-secondary-rgb),0.05) 100%)',
+                    boxShadow: '0 0 20px rgba(var(--glow-secondary-rgb),0.4), inset 0 0 15px rgba(var(--glow-secondary-rgb),0.1)',
                   }}
                 >
-                  <Shield width={20} height={20} className="text-cyan-400" style={{ filter: 'drop-shadow(0 0 8px rgba(0,255,255,0.8))' }} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/10 to-transparent" />
+                  <Shield width={20} height={20} className="text-secondary" style={{ filter: 'drop-shadow(0 0 8px rgba(var(--glow-secondary-rgb),0.8))' }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary/10 to-transparent" />
                 </div>
               </div>
             </div>
@@ -255,15 +255,15 @@ export default function CockpitPage() {
 
             {/* Right Info - Hologram Style */}
             <div
-              className="text-right gap-y-1 px-4 py-2 rounded border border-cyan-400/50 animate-pulse"
+              className="text-right gap-y-1 px-4 py-2 rounded border border-secondary/50 animate-pulse"
               style={{
                 animationDuration: '4s',
-                background: 'linear-gradient(180deg, rgba(0,255,255,0.1) 0%, rgba(0,255,255,0.03) 100%)',
-                boxShadow: '0 0 15px rgba(0,255,255,0.25), inset 0 0 10px rgba(0,255,255,0.05)',
+                background: 'linear-gradient(180deg, rgba(var(--glow-secondary-rgb),0.1) 0%, rgba(var(--glow-secondary-rgb),0.03) 100%)',
+                boxShadow: '0 0 15px rgba(var(--glow-secondary-rgb),0.25), inset 0 0 10px rgba(var(--glow-secondary-rgb),0.05)',
               }}
             >
-              <div className="text-[10px] font-mono text-cyan-400/80 tracking-wider">ENFP-DEV-STUDIO</div>
-              <div className="text-[10px] font-mono text-cyan-400" style={{ filter: 'drop-shadow(0 0 4px rgba(0,255,255,0.6))' }}>MIT LICENSE</div>
+              <div className="text-[10px] font-mono text-secondary/80 tracking-wider">ENFP-DEV-STUDIO</div>
+              <div className="text-[10px] font-mono text-secondary" style={{ filter: 'drop-shadow(0 0 4px rgba(var(--glow-secondary-rgb),0.6))' }}>MIT LICENSE</div>
             </div>
           </div>
         </div>

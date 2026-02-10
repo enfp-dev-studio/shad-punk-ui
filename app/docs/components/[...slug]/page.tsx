@@ -17,8 +17,9 @@ import { Sheet, SheetHeader, SheetDescription, SheetFooter, SheetTrigger, SheetT
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Spinner, LoadingOverlay } from "@/components/ui/spinner";
 import { Checkbox } from "@/components/ui/checkbox";
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+import { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from "@/components/ui/input-otp";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 
 const docs: Record<string, {
@@ -119,17 +120,17 @@ const docs: Record<string, {
       <div className="flex items-center gap-6 flex-wrap">
         <label className="flex items-center gap-2">
           <Checkbox />
-          <span className="font-mono text-emerald-300">Enable feature</span>
+          <span className="font-mono text-primary">Enable feature</span>
         </label>
 
         <label className="flex items-center gap-2">
           <Checkbox defaultChecked />
-          <span className="font-mono text-emerald-300">Checked</span>
+          <span className="font-mono text-primary">Checked</span>
         </label>
 
         <label className="flex items-center gap-2">
           <Checkbox disabled />
-          <span className="font-mono text-emerald-300/70">Disabled</span>
+          <span className="font-mono text-muted-foreground">Disabled</span>
         </label>
       </div>
     ),
@@ -169,7 +170,7 @@ const docs: Record<string, {
           <CardDescription>All systems operational</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-emerald-300/70">Connection: Active</p>
+          <p className="text-muted-foreground">Connection: Active</p>
         </CardContent>
       </Card>
     ),
@@ -189,7 +190,7 @@ const docs: Record<string, {
     title: "Command",
     description: "Command palette for keyboard navigation",
     preview: (
-      <div className="text-emerald-300/70 text-sm font-mono wrap-break-word">
+      <div className="text-muted-foreground text-sm font-mono wrap-break-word">
         Press Cmd+K to open command palette
       </div>
     ),
@@ -258,47 +259,55 @@ const docs: Record<string, {
     description: "One-time password input with emerald/dark aesthetic",
     preview: (
       <div className="w-full space-y-6 overflow-hidden scrollbar-hide">
-        <div>
-          <p className="text-emerald-300/70 font-mono text-sm mb-3">6-Digit OTP</p>
-          <InputOTP maxLength={6}>
-            <InputOTPGroup>
-              {[0, 1, 2, 3, 4, 5].map((i) => (
-                <InputOTPSlot key={i} index={i} />
-              ))}
-            </InputOTPGroup>
-          </InputOTP>
-        </div>
-        <div>
-          <p className="text-emerald-300/70 font-mono text-sm mb-3">4-Digit PIN</p>
-          <InputOTP maxLength={4}>
-            <InputOTPGroup>
-              {[0, 1, 2, 3].map((i) => (
-                <InputOTPSlot key={i} index={i} />
-              ))}
-            </InputOTPGroup>
-          </InputOTP>
-        </div>
-      </div>
-    ),
-    code: `import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
+        <div className="flex gap-4">
+          <div className="text-center">
+            <InputOTP maxLength={6}>
+              <InputOTPGroup>
+                <InputOTPSlot index={0} />
+                <InputOTPSlot index={1} />
+                <InputOTPSlot index={2} />
+              </InputOTPGroup>
+              <InputOTPSeparator />
+              <InputOTPGroup>
+                <InputOTPSlot index={3} />
+                <InputOTPSlot index={4} />
+                <InputOTPSlot index={5} />
+              </InputOTPGroup>
+            </InputOTP>
+            <p className="text-muted-foreground font-mono text-sm mb-3">6-Digit OTP</p>
+          </div>
 
-// 6-digit OTP
-<InputOTP maxLength={6}>
-  <InputOTPGroup>
-    {[0, 1, 2, 3, 4, 5].map((i) => (
-      <InputOTPSlot key={i} index={i} />
-    ))}
-  </InputOTPGroup>
-</InputOTP>
+          <div className="text-center">
+            <InputOTP maxLength={4}>
+              <InputOTPGroup>
+                <InputOTPSlot index={0} />
+                <InputOTPSlot index={1} />
+                <InputOTPSlot index={2} />
+                <InputOTPSlot index={3} />
+              </InputOTPGroup>
+            </InputOTP>
+            <p className="text-muted-foreground font-mono text-sm mb-3">4-Digit PIN</p>
+          </div>
+        </div></div>),
+    code: `import {InputOTP, InputOTPGroup, InputOTPSlot} from "@/components/ui/input-otp"
+
+        // 6-digit OTP
+        <InputOTP maxLength={6}>
+          <InputOTPGroup>
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <InputOTPSlot key={i} index={i} />
+            ))}
+          </InputOTPGroup>
+        </InputOTP>
 
 // 4-digit PIN
-<InputOTP maxLength={4}>
-  <InputOTPGroup>
-    {[0, 1, 2, 3].map((i) => (
-      <InputOTPSlot key={i} index={i} />
-    ))}
-  </InputOTPGroup>
-</InputOTP>`,
+        <InputOTP maxLength={4}>
+          <InputOTPGroup>
+            {[0, 1, 2, 3].map((i) => (
+              <InputOTPSlot key={i} index={i} />
+            ))}
+          </InputOTPGroup>
+        </InputOTP>`,
   },
   progress: {
     title: "Progress",
@@ -310,11 +319,11 @@ const docs: Record<string, {
         <Progress value={100} />
       </div>
     ),
-    code: `import { Progress } from "@/components/ui/progress"
+    code: `import {Progress} from "@/components/ui/progress"
 
-<Progress value={33} />
-<Progress value={66} />
-<Progress value={100} />`,
+        <Progress value={33} />
+        <Progress value={66} />
+        <Progress value={100} />`,
   },
   separator: {
     title: "Separator",
@@ -326,11 +335,11 @@ const docs: Record<string, {
         <div>Section 2</div>
       </div>
     ),
-    code: `import { Separator } from "@/components/ui/separator"
+    code: `import {Separator} from "@/components/ui/separator"
 
-<div>Section 1</div>
-<Separator />
-<div>Section 2</div>`,
+        <div>Section 1</div>
+        <Separator />
+        <div>Section 2</div>`,
   },
   sheet: {
     title: "Sheet",
@@ -349,45 +358,56 @@ const docs: Record<string, {
               This is the Shad-Punk sheet. Put any content you want here.
             </SheetDescription>
           </SheetHeader>
-          <div className="mt-4 text-sm text-emerald-200 font-mono">
+          <div className="mt-4 text-sm text-muted-foreground font-mono">
             Sheet content goes here. It slides over the page from the right.
           </div>
         </SheetContent>
       </Sheet>
     ),
-    code: `import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet"
-import { Button } from "@/components/ui/button"
+    code: `import {Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription} from "@/components/ui/sheet"
+        import {Button} from "@/components/ui/button"
 
-<Sheet>
-  <SheetTrigger asChild>
-    <Button variant="outline" size="sm">
-      Open Sheet
-    </Button>
-  </SheetTrigger>
-  <SheetContent side="right">
-    <SheetHeader>
-      <SheetTitle>Panel Title</SheetTitle>
-    </SheetHeader>
-  </SheetContent>
-</Sheet>`,
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="outline" size="sm">
+              Open Sheet
+            </Button>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>Edit profile</SheetTitle>
+              <SheetDescription>
+                Make changes to your profile here. Click save when you're done.
+              </SheetDescription>
+            </SheetHeader>
+            <div className="grid gap-4 py-4">
+              {/* Sheet content */}
+            </div>
+            <SheetFooter>
+              <SheetClose asChild>
+                <Button type="submit">Save changes</Button>
+              </SheetClose>
+            </SheetFooter>
+          </SheetContent>
+        </Sheet>`,
   },
   sidebar: {
     title: "Sidebar",
     description: "Navigation sidebar component",
     preview: (
-      <div className="text-emerald-300/70 text-sm font-mono wrap-break-word">
+      <div className="text-muted-foreground text-sm font-mono wrap-break-word">
         Collapsible sidebar navigation (see the sidebar on the left)
       </div>
     ),
-    code: `import { Sidebar, SidebarContent, SidebarProvider } from "@/components/ui/sidebar"
+    code: `import {Sidebar, SidebarContent, SidebarProvider} from "@/components/ui/sidebar"
 
-<SidebarProvider>
-  <Sidebar>
-    <SidebarContent>
-      Your content here
-    </SidebarContent>
-  </Sidebar>
-</SidebarProvider>`,
+        <SidebarProvider>
+          <Sidebar>
+            <SidebarContent>
+              Your content here
+            </SidebarContent>
+          </Sidebar>
+        </SidebarProvider>`,
   },
   skeleton: {
     title: "Skeleton",
@@ -399,10 +419,10 @@ import { Button } from "@/components/ui/button"
         <Skeleton className="h-12 w-1/2" />
       </div>
     ),
-    code: `import { Skeleton } from "@/components/ui/skeleton"
+    code: `import {Skeleton} from "@/components/ui/skeleton"
 
-<Skeleton className="h-12 w-full" />
-<Skeleton className="h-12 w-3/4" />`,
+        <Skeleton className="h-12 w-full" />
+        <Skeleton className="h-12 w-3/4" />`,
   },
   table: {
     title: "Table",
@@ -410,7 +430,7 @@ import { Button } from "@/components/ui/button"
     preview: (
       <div className="relative w-full h-80 flex items-center justify-center p-2 sm:p-4">
         <div
-          className="relative w-full h-full bg-[#001a1a] text-emerald-300 border border-emerald-500/50 clip-corners-table overflow-auto group 
+          className="relative w-full h-full bg-background/90 text-primary border border-primary/50 clip-corners-table overflow-auto group 
           shadow-[inset_0_1px_0_0_rgba(6,182,212,0.2),0_0_0_1px_rgba(6,182,212,0.15),0_4px_24px_rgba(0,0,0,0.4)]"
         >
           <div
@@ -419,7 +439,7 @@ import { Button } from "@/components/ui/button"
           />
 
           <table className="w-full caption-bottom text-sm font-mono relative z-10 min-w-[400px]">
-            <thead className="[&_tr]:border-b [&_tr]:border-emerald-500/30">
+            <thead className="[&_tr]:border-b [&_tr]:border-border">
               <tr>
                 <th className="h-10 px-2 sm:px-4 text-left align-middle font-bold uppercase tracking-wider text-xs group-hover:text-shadow-glow">
                   ID
@@ -433,24 +453,24 @@ import { Button } from "@/components/ui/button"
               </tr>
             </thead>
             <tbody className="[&_tr:last-child]:border-0">
-              <tr className="border-b border-emerald-500/30 hover:bg-[#002626]">
-                <td className="p-2 sm:p-3 align-middle text-emerald-200/90">0x001A</td>
-                <td className="p-2 sm:p-3 align-middle text-red-400">
-                  <span className="text-shadow-glow-red">ERROR</span>
+              <tr className="border-b border-border hover:bg-accent">
+                <td className="p-2 sm:p-3 align-middle text-foreground">0x001A</td>
+                <td className="p-2 sm:p-3 align-middle text-destructive">
+                  <span className="text-shadow-glow-destructive">ERROR</span>
                 </td>
-                <td className="p-2 sm:p-3 align-middle text-emerald-200/90">
+                <td className="p-2 sm:p-3 align-middle text-foreground">
                   Initialize Subsystem
                 </td>
               </tr>
               <tr
-                className="border-b border-emerald-500/30 hover:bg-[#002626] data-[state=selected]:bg-[#002626]"
+                className="border-b border-border hover:bg-accent data-[state=selected]:bg-accent"
                 data-state="selected"
               >
-                <td className="p-2 sm:p-3 align-middle text-emerald-200/90">0x002B</td>
-                <td className="p-2 sm:p-3 align-middle text-cyan-400/90 font-bold">
+                <td className="p-2 sm:p-3 align-middle text-foreground">0x002B</td>
+                <td className="p-2 sm:p-3 align-middle text-primary font-bold">
                   RUNNING
                 </td>
-                <td className="p-2 sm:p-3 align-middle text-emerald-200/90">
+                <td className="p-2 sm:p-3 align-middle text-foreground">
                   Data Fetch Cycle
                 </td>
               </tr>
@@ -459,16 +479,16 @@ import { Button } from "@/components/ui/button"
         </div>
       </div>
     ),
-    code: `import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
+    code: `import {Table, TableBody, TableCell, TableRow} from "@/components/ui/table"
 
-<Table>
-  <TableBody>
-    <TableRow>
-      <TableCell>Item 1</TableCell>
-      <TableCell>Active</TableCell>
-    </TableRow>
-  </TableBody>
-</Table>`,
+        <Table>
+          <TableBody>
+            <TableRow>
+              <TableCell>Item 1</TableCell>
+              <TableCell>Active</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>`,
   },
   spinner: {
     title: "Spinner",
@@ -476,50 +496,65 @@ import { Button } from "@/components/ui/button"
     preview: (
       <div className="space-y-8 w-full">
         <div>
-          <p className="text-emerald-300/70 font-mono text-sm mb-4">Sizes</p>
+          <p className="text-muted-foreground font-mono text-sm mb-4">Sizes</p>
           <div className="flex gap-6 items-center flex-wrap">
             <div className="flex flex-col items-center gap-2">
               <Spinner size="sm" />
-              <span className="text-xs text-emerald-300/50 font-mono">Small</span>
+              <span className="text-muted-foreground font-mono">Small</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Spinner />
-              <span className="text-xs text-emerald-300/50 font-mono">Default</span>
+              <span className="text-muted-foreground font-mono">Default</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Spinner size="lg" />
-              <span className="text-xs text-emerald-300/50 font-mono">Large</span>
+              <span className="text-muted-foreground font-mono">Large</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Spinner size="xl" />
-              <span className="text-xs text-emerald-300/50 font-mono">XL</span>
+              <span className="text-muted-foreground font-mono">XL</span>
             </div>
           </div>
         </div>
 
         <div>
-          <p className="text-emerald-300/70 font-mono text-sm mb-4">Variants</p>
+          <p className="text-muted-foreground font-mono text-sm mb-4">Variants</p>
           <div className="flex gap-6 items-center flex-wrap">
             <div className="flex flex-col items-center gap-2">
               <Spinner variant="default" size="lg" />
-              <span className="text-xs text-emerald-300/50 font-mono">Default</span>
+              <span className="text-muted-foreground font-mono">Default</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Spinner variant="destructive" size="lg" />
-              <span className="text-xs text-emerald-300/50 font-mono">Destructive</span>
+              <span className="text-muted-foreground font-mono">Destructive</span>
             </div>
           </div>
         </div>
 
         <div>
-          <p className="text-emerald-300/70 font-mono text-sm mb-4">Loading Overlay</p>
-          <div className="relative h-48 bg-[#001a1a] border border-emerald-500/30 [clip-path:polygon(0_8px,8px_0,calc(100%-8px)_0,100%_8px,100%_calc(100%-8px),calc(100%-8px)_100%,8px_100%,0_calc(100%-8px))]">
+          <div className="grid gap-4 p-4 border border-primary/30 rounded bg-black/40">
+            <div className="flex items-center gap-4">
+              <div className="relative h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+              </div>
+              <div className="space-y-1">
+                <p className="text-sm font-medium leading-none font-mono text-primary">System Online</p>
+                <p className="text-muted-foreground">Connection: Active</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p className="text-muted-foreground font-mono text-sm mb-4">Loading Overlay</p>
+          <div className="relative h-48 bg-background border border-border [clip-path:polygon(0_8px,8px_0,calc(100%-8px)_0,100%_8px,100%_calc(100%-8px),calc(100%-8px)_100%,8px_100%,0_calc(100%-8px))]">
             <LoadingOverlay text="Loading data..." />
           </div>
         </div>
       </div>
     ),
-    code: `import { Spinner, LoadingOverlay } from "@/components/ui/spinner"
+    code: `import {Spinner, LoadingOverlay} from "@/components/ui/spinner"
 
 // Basic spinner
 <Spinner />
@@ -540,9 +575,9 @@ import { Button } from "@/components/ui/button"
 </div>
 
 // Loading overlay with custom variant and size
-<LoadingOverlay 
-  text="Processing..." 
-  variant="destructive" 
+<LoadingOverlay
+  text="Processing..."
+  variant="destructive"
   size="xl"
 />`,
   },
@@ -554,12 +589,12 @@ import { Button } from "@/components/ui/button"
         <div
           data-slot="tabs-list"
           className="inline-flex h-9 min-w-fit items-center justify-center p-[3px] gap-1
-          bg-[#001a1a] border border-emerald-500/50 clip-corners-tabs relative overflow-hidden"
+          bg-background/90 border border-primary/50 clip-corners-tabs relative overflow-hidden"
         >
           <div
             data-slot="tabs-trigger"
             className="inline-flex h-[calc(100%-1px)] items-center px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium transition-all duration-300
-            font-mono uppercase tracking-wider text-emerald-400/70 hover:text-emerald-300 hover:bg-[#002626]/50 whitespace-nowrap"
+            font-mono uppercase tracking-wider text-muted-foreground hover:text-primary hover:bg-primary/20 whitespace-nowrap"
           >
             Tab One
           </div>
@@ -567,7 +602,7 @@ import { Button } from "@/components/ui/button"
             data-slot="tabs-trigger"
             data-state="active"
             className="inline-flex h-[calc(100%-1px)] items-center px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium transition-all duration-300
-            font-mono uppercase tracking-wider text-emerald-300 bg-[#002626] border-emerald-500/50 clip-corners-trigger
+            font-mono uppercase tracking-wider text-primary bg-primary/20 border-primary/50 clip-corners-trigger
             shadow-[inset_0_0_16px_rgba(6,182,212,0.15),0_0_8px_rgba(6,182,212,0.2)] whitespace-nowrap"
           >
             Active
@@ -576,23 +611,23 @@ import { Button } from "@/components/ui/button"
             data-slot="tabs-trigger"
             data-state="active"
             className="inline-flex h-[calc(100%-1px)] items-center px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium transition-all duration-300
-            font-mono uppercase tracking-wider text-emerald-400/70 hover:text-emerald-300 hover:bg-[#002626]/50 whitespace-nowrap"
+            font-mono uppercase tracking-wider text-muted-foreground hover:text-primary hover:bg-primary/20 whitespace-nowrap"
           >
             Info
           </div>
         </div>
       </div>
     ),
-    code: `import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+    code: `import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs"
 
-<Tabs defaultValue="tab1">
-  <TabsList>
-    <TabsTrigger value="tab1">Tab 1</TabsTrigger>
-    <TabsTrigger value="tab2">Tab 2</TabsTrigger>
-  </TabsList>
-  <TabsContent value="tab1">Content 1</TabsContent>
-  <TabsContent value="tab2">Content 2</TabsContent>
-</Tabs>`,
+        <Tabs defaultValue="tab1">
+          <TabsList>
+            <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+            <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+          </TabsList>
+          <TabsContent value="tab1">Content 1</TabsContent>
+          <TabsContent value="tab2">Content 2</TabsContent>
+        </Tabs>`,
   },
   tooltip: {
     title: "Tooltip",
@@ -609,14 +644,14 @@ import { Button } from "@/components/ui/button"
         </Tooltip>
       </TooltipProvider>
     ),
-    code: `import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+    code: `import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip"
 
-<Tooltip>
-  <TooltipTrigger>Hover</TooltipTrigger>
-  <TooltipContent>
-    <p>Tooltip text</p>
-  </TooltipContent>
-</Tooltip>`,
+        <Tooltip>
+          <TooltipTrigger>Hover</TooltipTrigger>
+          <TooltipContent>
+            <p>Tooltip text</p>
+          </TooltipContent>
+        </Tooltip>`,
   },
 };
 
@@ -632,13 +667,13 @@ function CopyButton({ text }: { text: string }) {
   return (
     <button
       onClick={copy}
-      className="absolute top-2 right-2 sm:top-4 sm:right-4 p-1.5 rounded bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition-colors z-10"
+      className="absolute top-2 right-2 sm:top-4 sm:right-4 p-1.5 rounded bg-primary/10 hover:bg-primary/20 border border-primary/30 transition-colors z-10"
       aria-label="Copy code"
     >
       {copied ? (
-        <Check className="h-3 w-3 sm:h-4 sm:w-4 text-emerald-400" />
+        <Check className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
       ) : (
-        <Copy className="h-3 w-3 sm:h-4 sm:w-4 text-emerald-400" />
+        <Copy className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
       )}
     </button>
   );
@@ -659,11 +694,11 @@ export default function ComponentPage({
 
   return (
     <div className="w-full max-w-4xl space-y-6 sm:space-y-8 px-4 sm:px-6 py-4 sm:py-6">
-      <div>
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold font-mono text-emerald-300 mb-2 wrap-break-word">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold font-mono text-primary mb-2 wrap-break-word">
           {doc.title}
         </h1>
-        <p className="text-sm sm:text-base text-emerald-300/70 font-mono wrap-break-word">{doc.description}</p>
+        <p className="text-sm sm:text-base text-muted-foreground font-mono wrap-break-word">{doc.description}</p>
       </div>
 
       {doc.dependencies && doc.dependencies.length > 0 && (
@@ -692,8 +727,8 @@ export default function ComponentPage({
         <CardContent>
           <div className="relative">
             <CopyButton text={`npx shadcn@latest add @shad-punk/${componentName}`} />
-            <pre className="bg-black/60 p-3 pr-10 sm:p-4 sm:pr-12 rounded border border-emerald-500/20 overflow-x-auto">
-              <code className="text-emerald-300 font-mono text-xs sm:text-sm break-all">
+            <pre className="bg-muted/40 p-3 pr-10 sm:p-4 sm:pr-12 rounded border border-primary/20 overflow-x-auto">
+              <code className="text-foreground font-mono text-xs sm:text-sm break-all">
                 npx shadcn@latest add @shad-punk/{componentName}
               </code>
             </pre>
@@ -708,8 +743,8 @@ export default function ComponentPage({
         <CardContent>
           <div className="relative">
             <CopyButton text={doc.code} />
-            <pre className="bg-black/60 p-3 pr-10 sm:p-4 sm:pr-12 rounded border border-emerald-500/20 overflow-x-auto">
-              <code className="text-emerald-300 font-mono text-xs sm:text-sm whitespace-pre-wrap wrap-break-word">
+            <pre className="bg-muted/40 p-3 pr-10 sm:p-4 sm:pr-12 rounded border border-primary/20 overflow-x-auto">
+              <code className="text-foreground font-mono text-xs sm:text-sm whitespace-pre-wrap wrap-break-word">
                 {doc.code}
               </code>
             </pre>

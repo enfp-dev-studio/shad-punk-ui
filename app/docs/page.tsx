@@ -38,10 +38,10 @@ export default function GettingStarted() {
   return (
     <div className="max-w-4xl space-y-8">
       <div>
-        <h1 className="text-5xl font-bold font-mono text-emerald-300 mb-2">
+        <h1 className="text-5xl font-bold font-mono text-primary mb-2">
           Getting Started
         </h1>
-        <p className="text-xl text-emerald-300/70 font-mono">
+        <p className="text-xl text-muted-foreground font-mono">
           Hollywood's idea of what a hacker's screen looks like
         </p>
       </div>
@@ -55,11 +55,11 @@ export default function GettingStarted() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-emerald-300/70">
+          <p className="text-foreground">
             Shad-Punk provides drop-in React components with a distinctive retro-futuristic aesthetic.
             All components feature:
           </p>
-          <ul className="space-y-2 text-emerald-300/70 list-disc list-inside">
+          <ul className="space-y-2 text-foreground list-disc list-inside">
             <li>Animated scanline effects</li>
             <li>Glowing cyan/emerald borders</li>
             <li>Monospace typography</li>
@@ -74,10 +74,10 @@ export default function GettingStarted() {
           <CardTitle>Prerequisites</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-emerald-300/70">
+          <p className="text-foreground">
             Before installing components, make sure you have:
           </p>
-          <ul className="space-y-2 text-emerald-300/70 list-disc list-inside">
+          <ul className="space-y-2 text-foreground list-disc list-inside">
             <li>Next.js 14+ project with App Router</li>
             <li>Tailwind CSS configured</li>
             <li>TypeScript (recommended)</li>
@@ -96,16 +96,16 @@ export default function GettingStarted() {
           <div className="relative">
             <button
               onClick={() => copy(componentsJson, "components-json")}
-              className="absolute top-2 right-2 p-2 rounded bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition-colors z-10"
+              className="absolute top-2 right-2 p-2 rounded bg-primary/10 hover:bg-primary/20 border border-primary/30 transition-colors z-10"
             >
               {copied === "components-json" ? (
-                <Check className="h-4 w-4 text-emerald-400" />
+                <Check className="h-4 w-4 text-primary" />
               ) : (
-                <Copy className="h-4 w-4 text-emerald-400" />
+                <Copy className="h-4 w-4 text-primary" />
               )}
             </button>
-            <pre className="bg-black/60 p-4 pr-14 rounded border border-emerald-500/20 overflow-x-auto">
-              <code className="text-emerald-300 font-mono text-sm">
+            <pre className="bg-muted/40 p-4 pr-14 rounded border border-primary/20 overflow-x-auto">
+              <code className="text-foreground font-mono text-sm">
                 {componentsJson}
               </code>
             </pre>
@@ -122,20 +122,20 @@ export default function GettingStarted() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <p className="text-emerald-300/70 mb-3 font-bold">Install all components:</p>
+            <p className="text-muted-foreground mb-3 font-bold">Install all components:</p>
             <div className="relative">
               <button
                 onClick={() => copy("npx shadcn@latest add @shad-punk/all", "install-all")}
-                className="absolute top-2 right-2 p-2 rounded bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition-colors z-10"
+                className="absolute top-2 right-2 p-2 rounded bg-primary/10 hover:bg-primary/20 border border-primary/30 transition-colors z-10"
               >
                 {copied === "install-all" ? (
-                  <Check className="h-4 w-4 text-emerald-400" />
+                  <Check className="h-4 w-4 text-primary" />
                 ) : (
-                  <Copy className="h-4 w-4 text-emerald-400" />
+                  <Copy className="h-4 w-4 text-primary" />
                 )}
               </button>
-              <pre className="bg-black/60 p-4 pr-14 rounded border border-emerald-500/20">
-                <code className="text-emerald-300 font-mono text-sm">
+              <pre className="bg-muted/40 p-4 pr-14 rounded border border-primary/20">
+                <code className="text-foreground font-mono text-sm">
                   npx shadcn@latest add @shad-punk/all
                 </code>
               </pre>
@@ -143,20 +143,20 @@ export default function GettingStarted() {
           </div>
 
           <div>
-            <p className="text-emerald-300/70 mb-3 font-bold">Or install individual components:</p>
+            <p className="text-muted-foreground mb-3 font-bold">Or install individual components:</p>
             <div className="relative">
               <button
                 onClick={() => copy("npx shadcn@latest add @shad-punk/button @shad-punk/card", "install-individual")}
-                className="absolute top-2 right-2 p-2 rounded bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition-colors z-10"
+                className="absolute top-2 right-2 p-2 rounded bg-primary/10 hover:bg-primary/20 border border-primary/30 transition-colors z-10"
               >
                 {copied === "install-individual" ? (
-                  <Check className="h-4 w-4 text-emerald-400" />
+                  <Check className="h-4 w-4 text-primary" />
                 ) : (
-                  <Copy className="h-4 w-4 text-emerald-400" />
+                  <Copy className="h-4 w-4 text-primary" />
                 )}
               </button>
-              <pre className="bg-black/60 p-4 pr-14 rounded border border-emerald-500/20">
-                <code className="text-emerald-300 font-mono text-sm">
+              <pre className="bg-muted/40 p-4 pr-14 rounded border border-primary/20">
+                <code className="text-foreground font-mono text-sm">
                   npx shadcn@latest add @shad-punk/button @shad-punk/card
                 </code>
               </pre>
@@ -176,16 +176,16 @@ export default function GettingStarted() {
           <div className="relative">
             <button
               onClick={() => copy('import { Button } from "@/components/ui/button"\n\nexport default function Page() {\n  return <Button>Click me</Button>\n}', "usage-code")}
-              className="absolute top-2 right-2 p-2 rounded bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition-colors z-10"
+              className="absolute top-2 right-2 p-2 rounded bg-primary/10 hover:bg-primary/20 border border-primary/30 transition-colors z-10"
             >
               {copied === "usage-code" ? (
-                <Check className="h-4 w-4 text-emerald-400" />
+                <Check className="h-4 w-4 text-primary" />
               ) : (
-                <Copy className="h-4 w-4 text-emerald-400" />
+                <Copy className="h-4 w-4 text-primary" />
               )}
             </button>
-            <pre className="bg-black/60 p-4 pr-14 rounded border border-emerald-500/20">
-              <code className="text-emerald-300 font-mono text-sm whitespace-pre">
+            <pre className="bg-muted/40 p-4 pr-14 rounded border border-primary/20">
+              <code className="text-foreground font-mono text-sm whitespace-pre">
                 {`import { Button } from "@/components/ui/button"
 
 export default function Page() {
@@ -205,14 +205,14 @@ export default function Page() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2">
-          <p className="text-emerald-300/70">
+          <p className="text-foreground">
             Browse all available components in the sidebar or visit the{" "}
-            <a href="/docs/components" className="text-cyan-400 hover:text-cyan-300 underline">
+            <a href="/docs/components" className="text-secondary hover:text-secondary/80 underline">
               Components
             </a>{" "}
             page.
           </p>
-          <p className="text-emerald-300/70">
+          <p className="text-foreground">
             Each component page includes live previews, installation commands, and usage examples.
           </p>
         </CardContent>

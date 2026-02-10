@@ -15,17 +15,17 @@ export function InstrumentPanel() {
 function InstrumentGauge({ label, icon, delay }: { label: string, icon: React.ReactNode, delay: number }) {
     return (
         <div className="text-center animate-pulse" style={{ animationDuration: '3s', animationDelay: `${delay}s` }}>
-            <div className="text-[10px] text-cyan-400/80 font-mono mb-1 tracking-widest">{label}</div>
+            <div className="text-[10px] text-secondary/80 font-mono mb-1 tracking-widest">{label}</div>
             <div
-                className="w-12 h-12 rounded border border-cyan-400/60 flex items-center justify-center relative overflow-hidden bg-background/50 backdrop-blur-sm"
+                className="w-12 h-12 rounded border border-secondary/60 flex items-center justify-center relative overflow-hidden bg-background/50 backdrop-blur-sm"
                 style={{
-                    boxShadow: '0 0 15px rgba(0,255,255,0.2), inset 0 0 10px rgba(0,255,255,0.05)',
+                    boxShadow: '0 0 15px rgba(var(--glow-secondary-rgb),0.2), inset 0 0 10px rgba(var(--glow-secondary-rgb),0.05)',
                 }}
             >
-                <div className="text-cyan-400 relative z-10" style={{ filter: 'drop-shadow(0 0 5px rgba(0,255,255,0.6))' }}>
+                <div className="text-secondary relative z-10" style={{ filter: 'drop-shadow(0 0 5px rgba(var(--glow-secondary-rgb),0.6))' }}>
                     {icon}
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary/10 to-transparent" />
             </div>
         </div>
     );

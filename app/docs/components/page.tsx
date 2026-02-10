@@ -23,10 +23,10 @@ export default function ComponentsListPage() {
 
   return (
     <div className="max-w-6xl space-y-8">
-      <div className="space-y-4">
-        <h1 className="font-mono text-5xl font-bold text-emerald-300">Components</h1>
-        <p className="font-mono text-xl text-emerald-300/70">
-          Browse all available components. Click to view details or copy install command.
+      <div className="mb-8">
+        <h1 className="font-mono text-5xl font-bold text-primary">Components</h1>
+        <p className="font-mono text-xl text-muted-foreground">
+          Primitives for your next cyberpunk project
         </p>
       </div>
 
@@ -39,10 +39,12 @@ export default function ComponentsListPage() {
                   href={`/docs/components/${comp}`}
                   className="flex items-center gap-2 flex-1"
                 >
-                  <Terminal size={16} className="text-cyan-400" />
-                  <span className="font-mono text-lg text-emerald-300 group-hover:text-emerald-200 capitalize">
-                    {comp}
-                  </span>
+                  <div className="flex items-center gap-3 mb-3">
+                    <Terminal size={16} className="text-secondary" />
+                    <span className="font-mono text-lg text-primary group-hover:text-primary/80 capitalize">
+                      {comp}
+                    </span>
+                  </div>
                 </Link>
                 <Button
                   size="sm"
@@ -52,9 +54,9 @@ export default function ComponentsListPage() {
                   {copied === comp ? <Check size={14} /> : <Copy size={14} />}
                 </Button>
               </div>
-              <div className="bg-black border border-emerald-500/30 rounded p-2">
-                <code className="font-mono text-xs text-emerald-300/80">
-                  npx shadcn@latest add @shad-punk/{comp}
+              <div className="bg-black border border-primary/30 rounded p-2">
+                <code className="font-mono text-xs text-muted-foreground">
+                  import &#123; {comp.charAt(0).toUpperCase() + comp.slice(1)} &#125; from...
                 </code>
               </div>
             </CardContent>
