@@ -22,7 +22,7 @@ import {
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import { HyperspaceBackground } from "@/components/backgrounds";
-import { Rocket } from "lucide-react";
+import { ChevronRight, Rocket } from "lucide-react";
 
 export default function CockpitPage() {
   const router = useRouter();
@@ -120,30 +120,18 @@ export default function CockpitPage() {
             </div>
           </div>
           {/* Center Viewport */}
-          <div className="flex items-center justify-center px-8">
-            <div className="text-center gap-y-8">
-              <Badge className="px-4 py-2">
-                MECH COMBAT UI LIBRARY
-              </Badge>
-
-              <h1 className="text-5xl lg:text-7xl font-mono font-bold tracking-tight">
+          <div className="flex items-center justify-center">
+            <div className="flex flex-col text-center gap-y-8">
+              <h1 className="text-5xl lg:text-7xl font-mono font-bold tracking-tight leading-tight">
                 <span className="text-foreground">BUILD </span>
                 <span className="text-primary">CYBERPUNK</span>
                 <br />
                 <span className="text-foreground">INTERFACES</span>
               </h1>
-
-              <p className="text-muted-foreground font-mono text-sm max-w-md mx-auto">
-                Armored Core & Edgerunners inspired components for Next.js
-              </p>
-
               <div className="flex gap-4 justify-center">
                 <Button size="lg" onClick={() => router.push('/docs')}>
                   GET STARTED
-                  <ArrowRight width={18} height={18} className="ml-2" />
-                </Button>
-                <Button size="lg" variant="destructive" onClick={() => router.push('/docs/components')}>
-                  COMPONENTS
+                  <ChevronRight width={18} height={18} className="ml-2" />
                 </Button>
               </div>
             </div>
@@ -251,7 +239,6 @@ export default function CockpitPage() {
 
             {/* Center Radar/Install Command */}
             <div
-              className=""
               onClick={copyInstallCommand}
             >
               <div className="flex items-center justify-between mb-3">
