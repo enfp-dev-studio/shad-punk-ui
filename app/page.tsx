@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { ThemeSwitcher } from "@/components/ui/theme-switcher";
+
 import {
   Terminal as TerminalIcon,
   Cpu,
@@ -64,7 +64,6 @@ export default function CockpitPage() {
             </Link>
 
             <div className="flex gap-3 items-center">
-              <ThemeSwitcher />
               <Button size="sm" onClick={() => router.push('/docs')}>DOCS</Button>
               <Button size="sm" onClick={() => window.open("https://github.com/enfp-dev-studio/shad-punk-ui", "_blank")}>
                 <Github width={16} height={16} />

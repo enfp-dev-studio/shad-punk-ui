@@ -2,8 +2,8 @@
 @import "tw-animate-css";
 
 /* ============================================================
-   SHAD-PUNK/UI - Dual Theme System
-   Themes: Edgerunners (cyberpunk neon) / Armored Core (military HUD)
+   SHAD-PUNK/UI
+   Cyberpunk UI primitives & Augmented-ui wrapper
    ============================================================ */
 
 @layer base {
@@ -16,6 +16,72 @@
     /* --font-mono: "Rajdhani", sans-serif; */
     --font-mono: "Orbitron", sans-serif;
     --radius: 0.625rem;
+
+    /* ============================================================
+       CORE THEME
+       High-contrast cyberpunk palette + augmented-ui shapes
+       ============================================================ */
+
+    /* Core Colors */
+    --background: oklch(0.1 0.04 100);
+    --foreground: oklch(0.95 0.05 95);
+    --card: oklch(0.12 0.05 100);
+    --card-foreground: oklch(0.95 0.05 95);
+    --popover: oklch(0.12 0.05 100);
+    --popover-foreground: oklch(0.95 0.05 95);
+    --primary: oklch(0.85 0.22 95);
+    --primary-foreground: oklch(0.1 0 0);
+    --secondary: oklch(0.8 0.15 195);
+    --secondary-foreground: oklch(0.1 0 0);
+    --muted: oklch(0.18 0.03 300);
+    --muted-foreground: oklch(0.65 0.02 300);
+    --accent: oklch(0.88 0.18 95);
+    --accent-foreground: oklch(0.1 0 0);
+    --destructive: oklch(0.65 0.28 25);
+    --destructive-foreground: oklch(0.98 0 0);
+    --border: oklch(0.85 0.22 95 / 20%);
+    --input: oklch(1 0 0 / 10%);
+    --ring: oklch(0.85 0.22 95);
+
+    /* Sidebar */
+    --sidebar: oklch(0.1 0.035 300);
+    --sidebar-foreground: oklch(0.95 0.01 300);
+    --sidebar-primary: oklch(0.65 0.29 350);
+    --sidebar-primary-foreground: oklch(0.98 0 0);
+    --sidebar-accent: oklch(0.18 0.03 300);
+    --sidebar-accent-foreground: oklch(0.95 0.01 300);
+    --sidebar-border: oklch(0.65 0.29 350 / 15%);
+    --sidebar-ring: oklch(0.65 0.29 350);
+
+    /* Chart */
+    --chart-1: oklch(0.65 0.29 350);
+    --chart-2: oklch(0.8 0.15 195);
+    --chart-3: oklch(0.88 0.18 95);
+    --chart-4: oklch(0.6 0.25 280);
+    --chart-5: oklch(0.65 0.28 25);
+
+    /* Glow System */
+    --glow-rgb: 252, 238, 10;
+    --glow-secondary-rgb: 0, 240, 255;
+
+    /* Effects */
+    --scanline-opacity: 0.04;
+    --scanline-speed: 6s;
+    --corner-size: 14px;
+
+    /* Augmented-ui: asymmetric TL+BR only (0px = disabled) */
+    --aug-card-tl: 10px;
+    --aug-card-tr: 0px;
+    --aug-card-br: 10px;
+    --aug-card-bl: 0px;
+    --aug-btn-tl: 5px;
+    --aug-btn-tr: 0px;
+    --aug-btn-br: 5px;
+    --aug-btn-bl: 0px;
+    --aug-badge-tl: 3px;
+    --aug-badge-tr: 0px;
+    --aug-badge-br: 3px;
+    --aug-badge-bl: 0px;
   }
 }
 
@@ -47,142 +113,6 @@ html {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-}
-
-/* ============================================================
-   THEME: EDGERUNNERS
-   Hot pink/magenta + neon cyan, glitch effects, asymmetric cuts
-   ============================================================ */
-
-[data-theme="edgerunners"] {
-  /* Core Colors */
-  --background: oklch(0.08 0.04 300);
-  --foreground: oklch(0.95 0.01 300);
-  --card: oklch(0.12 0.035 300);
-  --card-foreground: oklch(0.95 0.01 300);
-  --popover: oklch(0.12 0.035 300);
-  --popover-foreground: oklch(0.95 0.01 300);
-  --primary: oklch(0.65 0.29 350);
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.8 0.15 195);
-  --secondary-foreground: oklch(0.1 0 0);
-  --muted: oklch(0.18 0.03 300);
-  --muted-foreground: oklch(0.65 0.02 300);
-  --accent: oklch(0.88 0.18 95);
-  --accent-foreground: oklch(0.1 0 0);
-  --destructive: oklch(0.65 0.28 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.65 0.29 350 / 20%);
-  --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.65 0.29 350);
-
-  /* Sidebar */
-  --sidebar: oklch(0.1 0.035 300);
-  --sidebar-foreground: oklch(0.95 0.01 300);
-  --sidebar-primary: oklch(0.65 0.29 350);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent: oklch(0.18 0.03 300);
-  --sidebar-accent-foreground: oklch(0.95 0.01 300);
-  --sidebar-border: oklch(0.65 0.29 350 / 15%);
-  --sidebar-ring: oklch(0.65 0.29 350);
-
-  /* Chart */
-  --chart-1: oklch(0.65 0.29 350);
-  --chart-2: oklch(0.8 0.15 195);
-  --chart-3: oklch(0.88 0.18 95);
-  --chart-4: oklch(0.6 0.25 280);
-  --chart-5: oklch(0.65 0.28 25);
-
-  /* Glow (raw RGB for box-shadow rgba) */
-  --glow-rgb: 255, 0, 127;
-  --glow-secondary-rgb: 0, 220, 255;
-
-  /* Effects */
-  --scanline-opacity: 0.04;
-  --scanline-speed: 6s;
-  --corner-size: 14px;
-
-  /* Augmented-ui: asymmetric TL+BR only (0px = disabled) */
-  --aug-card-tl: 10px;
-  --aug-card-tr: 0px;
-  --aug-card-br: 10px;
-  --aug-card-bl: 0px;
-  --aug-btn-tl: 5px;
-  --aug-btn-tr: 0px;
-  --aug-btn-br: 5px;
-  --aug-btn-bl: 0px;
-  --aug-badge-tl: 3px;
-  --aug-badge-tr: 0px;
-  --aug-badge-br: 3px;
-  --aug-badge-bl: 0px;
-}
-
-/* ============================================================
-   THEME: ARMORED CORE
-   Tactical orange + HUD green, grid overlays, symmetric octagonal cuts
-   ============================================================ */
-
-[data-theme="armored-core"] {
-  /* Core Colors */
-  --background: oklch(0.08 0.012 240);
-  --foreground: oklch(0.88 0.01 200);
-  --card: oklch(0.12 0.012 240);
-  --card-foreground: oklch(0.88 0.01 200);
-  --popover: oklch(0.12 0.012 240);
-  --popover-foreground: oklch(0.88 0.01 200);
-  --primary: oklch(0.75 0.17 60);
-  --primary-foreground: oklch(0.08 0 0);
-  --secondary: oklch(0.68 0.18 155);
-  --secondary-foreground: oklch(0.08 0 0);
-  --muted: oklch(0.18 0.01 240);
-  --muted-foreground: oklch(0.55 0.01 200);
-  --accent: oklch(0.6 0.22 30);
-  --accent-foreground: oklch(0.98 0 0);
-  --destructive: oklch(0.55 0.25 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.75 0.17 60 / 15%);
-  --input: oklch(1 0 0 / 8%);
-  --ring: oklch(0.75 0.17 60);
-
-  /* Sidebar */
-  --sidebar: oklch(0.1 0.012 240);
-  --sidebar-foreground: oklch(0.88 0.01 200);
-  --sidebar-primary: oklch(0.75 0.17 60);
-  --sidebar-primary-foreground: oklch(0.08 0 0);
-  --sidebar-accent: oklch(0.18 0.01 240);
-  --sidebar-accent-foreground: oklch(0.88 0.01 200);
-  --sidebar-border: oklch(0.75 0.17 60 / 10%);
-  --sidebar-ring: oklch(0.75 0.17 60);
-
-  /* Chart */
-  --chart-1: oklch(0.75 0.17 60);
-  --chart-2: oklch(0.68 0.18 155);
-  --chart-3: oklch(0.6 0.22 30);
-  --chart-4: oklch(0.55 0.15 200);
-  --chart-5: oklch(0.7 0.12 90);
-
-  /* Glow */
-  --glow-rgb: 255, 140, 0;
-  --glow-secondary-rgb: 0, 200, 100;
-
-  /* Effects */
-  --scanline-opacity: 0.02;
-  --scanline-speed: 10s;
-  --corner-size: 10px;
-
-  /* Augmented-ui: symmetric 4-corner */
-  --aug-card-tl: 6px;
-  --aug-card-tr: 6px;
-  --aug-card-br: 6px;
-  --aug-card-bl: 6px;
-  --aug-btn-tl: 4px;
-  --aug-btn-tr: 4px;
-  --aug-btn-br: 4px;
-  --aug-btn-bl: 4px;
-  --aug-badge-tl: 3px;
-  --aug-badge-tr: 3px;
-  --aug-badge-br: 3px;
-  --aug-badge-bl: 3px;
 }
 
 /* ============================================================
@@ -447,12 +377,8 @@ html {
   }
 }
 
-/* ============================================================
-   THEME-SPECIFIC EFFECTS
-   ============================================================ */
-
-/* Edgerunners: Asymmetric 2-corner brackets (TL + BR only) */
-[data-theme="edgerunners"] .effect-corner::after {
+/* Corner Brackets */
+.effect-corner::after {
   --corner-opacity: 0.7;
   background-image:
     /* ── Top-left ── */
@@ -467,69 +393,12 @@ html {
     linear-gradient(var(--_corner-color), var(--_corner-color));
   filter: drop-shadow(0 0 3px rgba(var(--glow-secondary-rgb), 0.4));
 }
-[data-theme="edgerunners"] .effect-corner:hover::after {
+.effect-corner:hover::after {
   filter: drop-shadow(0 0 6px rgba(var(--glow-secondary-rgb), 0.7));
 }
 
-/* Armored Core: Symmetric 4-corner targeting reticle (dashed) */
-[data-theme="armored-core"] .effect-corner {
-  --_corner-w: 1.5px;
-  --corner-opacity: 0.5;
-}
-[data-theme="armored-core"] .effect-corner::after {
-  background-image:
-    /* ── Top-left ── */
-    repeating-linear-gradient(
-      to right,
-      var(--_corner-color) 0 3px,
-      transparent 3px 6px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      var(--_corner-color) 0 3px,
-      transparent 3px 6px
-    ),
-    /* ── Top-right ── */
-    repeating-linear-gradient(
-        to left,
-        var(--_corner-color) 0 3px,
-        transparent 3px 6px
-      ),
-    repeating-linear-gradient(
-      to bottom,
-      var(--_corner-color) 0 3px,
-      transparent 3px 6px
-    ),
-    /* ── Bottom-left ── */
-    repeating-linear-gradient(
-        to right,
-        var(--_corner-color) 0 3px,
-        transparent 3px 6px
-      ),
-    repeating-linear-gradient(
-      to top,
-      var(--_corner-color) 0 3px,
-      transparent 3px 6px
-    ),
-    /* ── Bottom-right ── */
-    repeating-linear-gradient(
-        to left,
-        var(--_corner-color) 0 3px,
-        transparent 3px 6px
-      ),
-    repeating-linear-gradient(
-      to top,
-      var(--_corner-color) 0 3px,
-      transparent 3px 6px
-    );
-}
-[data-theme="armored-core"] .effect-corner:hover::after {
-  --corner-opacity: 0.8;
-  filter: drop-shadow(0 0 3px rgba(var(--glow-secondary-rgb), 0.3));
-}
-
 /* Inner element equivalents for theme-specific corner brackets */
-[data-theme="edgerunners"] .effect-corner-inner {
+.effect-corner-inner {
   --corner-opacity: 0.7;
   background-image:
     linear-gradient(var(--_corner-color), var(--_corner-color)),
@@ -537,69 +406,6 @@ html {
     none, none, linear-gradient(var(--_corner-color), var(--_corner-color)),
     linear-gradient(var(--_corner-color), var(--_corner-color));
   filter: drop-shadow(0 0 3px rgba(var(--glow-secondary-rgb), 0.4));
-}
-
-[data-theme="armored-core"] .effect-corner-inner {
-  --_corner-w: 1.5px;
-  --corner-opacity: 0.5;
-  background-image:
-    repeating-linear-gradient(
-      to right,
-      var(--_corner-color) 0 3px,
-      transparent 3px 6px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      var(--_corner-color) 0 3px,
-      transparent 3px 6px
-    ),
-    repeating-linear-gradient(
-      to left,
-      var(--_corner-color) 0 3px,
-      transparent 3px 6px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      var(--_corner-color) 0 3px,
-      transparent 3px 6px
-    ),
-    repeating-linear-gradient(
-      to right,
-      var(--_corner-color) 0 3px,
-      transparent 3px 6px
-    ),
-    repeating-linear-gradient(
-      to top,
-      var(--_corner-color) 0 3px,
-      transparent 3px 6px
-    ),
-    repeating-linear-gradient(
-      to left,
-      var(--_corner-color) 0 3px,
-      transparent 3px 6px
-    ),
-    repeating-linear-gradient(
-      to top,
-      var(--_corner-color) 0 3px,
-      transparent 3px 6px
-    );
-}
-
-/* Armored Core: Grid overlay */
-[data-theme="armored-core"] .effect-grid::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(var(--glow-secondary-rgb), 0.03) 1px, transparent 1px),
-    linear-gradient(
-      90deg,
-      rgba(var(--glow-secondary-rgb), 0.03) 1px,
-      transparent 1px
-    );
-  background-size: 20px 20px;
-  pointer-events: none;
-  z-index: 0;
 }
 
 /* ============================================================
