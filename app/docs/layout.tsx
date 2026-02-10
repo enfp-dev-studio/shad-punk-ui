@@ -95,7 +95,8 @@ export default function DocsLayout({
     <>
       <header className="lg:hidden sticky top-0 z-50 flex h-14 items-center justify-between border-b border-primary/30 bg-black px-4">
         <Link href="/" className="flex items-center gap-2">
-          <Terminal className="text-secondary" size={20} />
+          {/* TODO LOGO */}
+          {/* <Terminal className="text-secondary" size={20} /> */}
           <span className="font-mono text-lg font-bold text-primary">Shad-Punk</span>
         </Link>
         <div className="flex items-center gap-2">
@@ -169,7 +170,8 @@ export default function DocsLayout({
           <Sidebar variant="inset" collapsible="icon" className="overflow-x-hidden">
             <SidebarHeader>
               <Link href="/" className="flex items-center gap-2 group px-2">
-                <Terminal className="text-secondary" size={24} />
+                {/* TODO LOGO */}
+                {/* <Terminal className="text-secondary" size={24} /> */}
                 <span className="font-mono text-xl font-bold text-primary group-data-[collapsible=icon]:hidden">
                   Shad-Punk
                 </span>
@@ -278,7 +280,8 @@ export default function DocsLayout({
                     className="w-full flex items-center justify-between px-3 py-2 rounded hover:bg-primary/10 text-left transition-colors group"
                   >
                     <div className="flex items-center gap-3">
-                      <Terminal className="h-4 w-4 text-secondary shrink-0" />
+                      {/* TODO LOGO */}
+                      {/* <Terminal className="h-4 w-4 text-secondary shrink-0" /> */}
                       <span className="font-mono text-foreground group-hover:text-primary text-sm">
                         {item.title}
                       </span>

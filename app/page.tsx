@@ -58,7 +58,8 @@ export default function CockpitPage() {
           <header className="col-span-3 flex items-center justify-between px-8 py-4">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="p-2 bg-primary/10 rounded border border-primary/30">
-                <TerminalIcon className="text-primary" width={20} height={20} />
+                {/* TODO LOGO */}
+                {/* <TerminalIcon className="text-primary" width={20} height={20} /> */}
               </div>
               <span className="font-mono text-lg font-bold text-primary">SHAD-PUNK</span>
             </Link>

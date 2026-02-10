@@ -68,7 +68,6 @@ export default function GettingStarted() {
           </ul>
         </CardContent>
       </Card>
-
       <Card>
         <CardHeader>
           <CardTitle>Prerequisites</CardTitle>
@@ -200,7 +199,6 @@ export default function Page() {
       <Card>
         <CardHeader>
           <CardTitle>
-            <Terminal className="inline-block mr-2 h-5 w-5" />
             Next Steps
           </CardTitle>
         </CardHeader>

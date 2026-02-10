@@ -12,12 +12,12 @@ const buttonVariants = cva(
         destructive: "bg-transparent text-destructive",
       },
       size: {
-        default: "h-10 px-6 py-2",
-        sm: "h-8 px-4 py-1.5 text-[10px]",
-        lg: "h-12 px-8 py-3 text-sm",
-        icon: "size-10",
-        "icon-sm": "size-8",
-        "icon-lg": "size-12"
+        default: "h-10 px-6 py-2 [--aug-btn-tl:0.3em] [--aug-btn-tr:0.3em] [--aug-btn-br:0.3em] [--aug-btn-bl:0.3em]",
+        sm: "h-8 px-4 py-1.5 text-[10px] [--aug-btn-tl:0.4em] [--aug-btn-tr:0.4em] [--aug-btn-br:0.4em] [--aug-btn-bl:0.4em]",
+        lg: "h-12 px-8 py-3 text-lg [--aug-btn-tl:0.3em] [--aug-btn-tr:0.3em] [--aug-btn-br:0.3em] [--aug-btn-bl:0.3em]",
+        icon: "size-10 [--aug-btn-tl:0.3em] [--aug-btn-tr:0.3em] [--aug-btn-br:0.3em] [--aug-btn-bl:0.3em]",
+        "icon-sm": "size-8 [--aug-btn-tl:0.4em] [--aug-btn-tr:0.4em] [--aug-btn-br:0.4em] [--aug-btn-bl:0.4em]",
+        "icon-lg": "size-12 [--aug-btn-tl:0.3em] [--aug-btn-tr:0.3em] [--aug-btn-br:0.3em] [--aug-btn-bl:0.3em]"
       }
     },
     defaultVariants: {

@@ -525,6 +525,18 @@ const docs: Record<string, {
               <span className="text-muted-foreground font-mono">Default</span>
             </div>
             <div className="flex flex-col items-center gap-2">
+              <Spinner variant="bar" size="lg" />
+              <span className="text-muted-foreground font-mono">Bar</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <Spinner variant="gradient" size="lg" />
+              <span className="text-muted-foreground font-mono">Gradient</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <Spinner variant="double-ring" size="lg" />
+              <span className="text-muted-foreground font-mono">Double Ring</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
               <Spinner variant="destructive" size="lg" />
               <span className="text-muted-foreground font-mono">Destructive</span>
             </div>
@@ -548,8 +560,8 @@ const docs: Record<string, {
 
         <div>
           <p className="text-muted-foreground font-mono text-sm mb-4">Loading Overlay</p>
-          <div className="relative h-48 bg-background border border-border [clip-path:polygon(0_8px,8px_0,calc(100%-8px)_0,100%_8px,100%_calc(100%-8px),calc(100%-8px)_100%,8px_100%,0_calc(100%-8px))]">
-            <LoadingOverlay text="Loading data..." />
+          <div className="relative h-48 bg-background border border-border">
+            <LoadingOverlay text="Loading data..." variant="gradient" />
           </div>
         </div>
       </div>
@@ -566,18 +578,21 @@ const docs: Record<string, {
 
 // Variants
 <Spinner variant="default" />
+<Spinner variant="bar" />
+<Spinner variant="gradient" />
+<Spinner variant="double-ring" />
 <Spinner variant="destructive" />
 
 // Loading overlay
 <div className="relative">
-  <LoadingOverlay text="Loading data..." />
+  <LoadingOverlay text="Loading data..." variant="gradient" />
   {/* Your content */}
 </div>
 
 // Loading overlay with custom variant and size
 <LoadingOverlay
   text="Processing..."
-  variant="destructive"
+  variant="bar"
   size="xl"
 />`,
   },

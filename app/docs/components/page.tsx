@@ -40,7 +40,8 @@ export default function ComponentsListPage() {
                   className="flex items-center gap-2 flex-1"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <Terminal size={16} className="text-secondary" />
+                    {/* TODO LOGO */}
+                    {/* <Terminal size={16} className="text-secondary" /> */}
                     <span className="font-mono text-lg text-primary group-hover:text-primary/80 capitalize">
                       {comp}
                     </span>

@@ -23,11 +23,12 @@
        ============================================================ */
 
     /* Core Colors */
-    --background: oklch(0.1 0.04 100);
+    /* Core Colors */
+    --background: oklch(0.1 0.04 100 / 80%);
     --foreground: oklch(0.95 0.05 95);
-    --card: oklch(0.12 0.05 100);
+    --card: oklch(0.12 0.05 100 / 50%);
     --card-foreground: oklch(0.95 0.05 95);
-    --popover: oklch(0.12 0.05 100);
+    --popover: oklch(0.12 0.05 100 / 80%);
     --popover-foreground: oklch(0.95 0.05 95);
     --primary: oklch(0.85 0.22 95);
     --primary-foreground: oklch(0.1 0 0);
@@ -474,5 +475,45 @@ html {
   }
   .aug-glow {
     filter: drop-shadow(0 0 5px rgba(var(--glow-rgb), 0.3)); /* Faint aura */
+  }
+  /* Spinner Animation */
+  @keyframes spinner-leaf-fade {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.25;
+    }
+  }
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rotationBack {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+
+  /* Explicit Animation Utilities */
+  .animate-rotation {
+    animation: rotation 2s linear infinite;
+  }
+  .animate-rotation-fast {
+    animation: rotation 1s linear infinite;
+  }
+  .animate-rotation-back {
+    animation: rotationBack 1s linear infinite;
+  }
+  .animate-rotation-back-fast {
+    animation: rotationBack 0.5s linear infinite;
   }
 }
