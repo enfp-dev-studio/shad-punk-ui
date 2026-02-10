@@ -660,3 +660,13 @@ html {
     opacity: 1;
   }
 }
+
+@layer utilities {
+  .text-glow {
+    color: var(--primary);
+    text-shadow: 0 0 10px rgba(var(--glow-rgb), 0.5); /* Subtle bloom only */
+  }
+  .aug-glow {
+    filter: drop-shadow(0 0 5px rgba(var(--glow-rgb), 0.3)); /* Faint aura */
+  }
+}
