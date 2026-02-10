@@ -2,27 +2,29 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
 import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 import {
   Terminal as TerminalIcon,
   Cpu,
   Shield,
-  Rocket,
-  Code,
-  Copy,
-  Check,
   Github,
   ArrowRight,
-  Sparks,
   Box3dPoint,
-  ColorFilter
+  Settings,
+  Antenna,
+  Server,
+  Copy,
+  Check
 } from "iconoir-react";
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
+import { HyperspaceBackground } from "@/components/backgrounds";
+import { Rocket } from "lucide-react";
 
-export default function Home() {
+export default function CockpitPage() {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
 
@@ -33,253 +35,252 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <div className="h-screen bg-black overflow-hidden relative">
+      {/* Hyperspace/Wormhole Background - easily swappable */}
+      <HyperspaceBackground />
+
       {/* Scanline Effect */}
-      <div className="absolute inset-0 effect-scanline pointer-events-none z-10" />
+      <div className="absolute inset-0 effect-scanline pointer-events-none z-50" />
 
-      {/* Background Grid */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `
-          linear-gradient(rgba(var(--glow-secondary-rgb), 0.5) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(var(--glow-secondary-rgb), 0.5) 1px, transparent 1px)
-        `,
-        backgroundSize: '60px 60px'
-      }} />
+      {/* Cockpit Frame - Vignette Effect */}
+      <div className="max-w-7xl mx-auto self-center h-full">
+        <div
+          className="absolute inset-0 pointer-events-none z-10"
+          style={{
+            boxShadow: 'inset 0 0 150px 50px rgba(0,0,0,0.9), inset 0 0 80px 30px rgba(0,0,0,0.7)'
+          }}
+        />
 
-      {/* Glow Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-secondary/10 blur-[120px] pointer-events-none" />
+        {/* Main Grid Layout - Responsive */}
+        <div className="relative z-40 h-full grid grid-cols-[minmax(200px,240px)_1fr_minmax(200px,240px)] lg:grid-cols-[minmax(220px,260px)_1fr_minmax(220px,260px)] grid-rows-[auto_1fr_auto] gap-x-4 lg:gap-x-8">
 
-      {/* Main Content */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Top Bar - spans all columns */}
+          <header className="col-span-3 flex items-center justify-between px-8 py-4">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="p-2 bg-primary/10 rounded border border-primary/30">
+                <TerminalIcon className="text-primary" width={20} height={20} />
+              </div>
+              <span className="font-mono text-lg font-bold text-primary">SHAD-PUNK</span>
+            </Link>
 
-        {/* Header */}
-        <header className="flex items-center justify-between py-6 border-b border-primary/20">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="p-2 bg-primary/10 rounded-lg border border-primary/30 group-hover:border-primary/50 transition-colors">
-              <TerminalIcon className="text-primary" width={24} height={24} />
+            <div className="flex gap-3 items-center">
+              <ThemeSwitcher />
+              <Button size="sm" onClick={() => router.push('/docs')}>DOCS</Button>
+              <Button size="sm" onClick={() => window.open("https://github.com/enfp-dev-studio/shad-punk-ui", "_blank")}>
+                <Github width={16} height={16} />
+              </Button>
             </div>
-            <div>
-              <h1 className="font-mono text-xl font-bold text-foreground">Shad-Punk</h1>
-              <span className="font-mono text-xs text-muted-foreground">v1.0.0</span>
-            </div>
-          </Link>
+          </header>
 
-          <div className="flex gap-3 items-center">
-            <ThemeSwitcher />
-            <Button size="sm" className="hidden sm:inline-flex" onClick={() => router.push('/docs')}>
-              Docs
-            </Button>
-            <Button size="sm" onClick={() => window.open("https://github.com/enfp-dev-studio/shad-punk-ui", "_blank")}>
-              <Github width={16} height={16} />
-            </Button>
+          {/* Left Panel - 3D Perspective */}
+          <div
+            className="flex flex-col justify-center px-6 gap-y-4"
+            style={{
+              perspective: '800px',
+              perspectiveOrigin: 'right center',
+            }}
+          >
+            <div className="flex flex-col rotate-y-45 gap-y-4">
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-xs font-mono text-primary flex items-center gap-2">
+                    <Antenna width={14} height={14} />
+                    COMMS
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="gap-y-2 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Status</span>
+                    <Badge className="text-[10px]">ONLINE</Badge>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Registry</span>
+                    <span className="text-primary">v1.0.0</span>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-xs font-mono text-primary flex items-center gap-2">
+                    <Rocket width={14} height={14} />
+                    AMMO
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="gap-y-2 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Status</span>
+                    <Badge className="text-[10px]">ONLINE</Badge>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Registry</span>
+                    <span className="text-primary">v1.0.0</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
-        </header>
-
-        {/* Hero Section */}
-        <section className="py-20 lg:py-32 text-center">
-          <div className="space-y-8">
-            {/* Badge */}
-            <div className="flex justify-center">
-              <Badge className="px-4 py-2 text-sm">
-                <Sparks width={14} height={14} className="mr-2" />
-                Mech Combat UI Components
+          {/* Center Viewport */}
+          <div className="flex items-center justify-center px-8">
+            <div className="text-center gap-y-8">
+              <Badge className="px-4 py-2">
+                MECH COMBAT UI LIBRARY
               </Badge>
-            </div>
 
-            {/* Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-mono font-bold tracking-tight">
-              <span className="text-foreground">Build </span>
-              <span className="text-primary">Cyberpunk</span>
-              <br />
-              <span className="text-foreground">Interfaces</span>
-            </h1>
+              <h1 className="text-5xl lg:text-7xl font-mono font-bold tracking-tight">
+                <span className="text-foreground">BUILD </span>
+                <span className="text-primary">CYBERPUNK</span>
+                <br />
+                <span className="text-foreground">INTERFACES</span>
+              </h1>
 
-            {/* Subtitle */}
-            <p className="max-w-2xl mx-auto text-lg sm:text-xl text-muted-foreground font-mono">
-              Armored Core & Edgerunners inspired UI components for Next.js.
-              <br className="hidden sm:block" />
-              Scanlines, HUD effects, and tactical aesthetics.
-            </p>
+              <p className="text-muted-foreground font-mono text-sm max-w-md mx-auto">
+                Armored Core & Edgerunners inspired components for Next.js
+              </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <Button size="lg" className="text-lg px-8" onClick={() => router.push('/docs')}>
-                Get Started
-                <ArrowRight width={20} height={20} className="ml-2" />
-              </Button>
-              <Button
-                size="lg"
-                variant="destructive"
-                className="text-lg px-8 font-mono"
-                onClick={() => router.push('/docs/components')}
-              >
-                View Components
-              </Button>
-            </div>
-
-            {/* Install Command */}
-            <div className="flex justify-center pt-8">
-              <div
-                className="flex items-center gap-3 px-6 py-4 bg-card/50 backdrop-blur-sm rounded-lg border border-primary/30 cursor-pointer hover:border-primary/50 transition-all group"
-                onClick={copyInstallCommand}
-              >
-                <code className="font-mono text-sm sm:text-base text-primary">
-                  npx shadcn@latest add @shad-punk/all
-                </code>
-                <button className="p-2 rounded bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  {copied ? (
-                    <Check width={16} height={16} className="text-primary" />
-                  ) : (
-                    <Copy width={16} height={16} className="text-primary" />
-                  )}
-                </button>
+              <div className="flex gap-4 justify-center">
+                <Button size="lg" onClick={() => router.push('/docs')}>
+                  GET STARTED
+                  <ArrowRight width={18} height={18} className="ml-2" />
+                </Button>
+                <Button size="lg" variant="destructive" onClick={() => router.push('/docs/components')}>
+                  COMPONENTS
+                </Button>
               </div>
             </div>
           </div>
-        </section>
 
-        {/* Features Section */}
-        <section className="py-20 border-t border-primary/20">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="group hover:border-primary/50 transition-all">
-              <CardHeader>
-                <div className="p-3 w-fit bg-primary/10 rounded-lg mb-4 group-hover:bg-primary/20 transition-colors">
-                  <Box3dPoint width={28} height={28} className="text-primary" />
-                </div>
-                <CardTitle>23+ Components</CardTitle>
-                <CardDescription>
-                  Cards, Buttons, Dialogs, Tables, Tabs, and more. All styled with cyberpunk aesthetics.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="group hover:border-primary/50 transition-all">
-              <CardHeader>
-                <div className="p-3 w-fit bg-primary/10 rounded-lg mb-4 group-hover:bg-primary/20 transition-colors">
-                  <ColorFilter width={28} height={28} className="text-primary" />
-                </div>
-                <CardTitle>Dual Themes</CardTitle>
-                <CardDescription>
-                  Edgerunners (neon pink/cyan) and Armored Core (tactical orange/green) themes included.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="group hover:border-primary/50 transition-all">
-              <CardHeader>
-                <div className="p-3 w-fit bg-primary/10 rounded-lg mb-4 group-hover:bg-primary/20 transition-colors">
-                  <Cpu width={28} height={28} className="text-primary" />
-                </div>
-                <CardTitle>shadcn Compatible</CardTitle>
-                <CardDescription>
-                  Works with shadcn/ui CLI. Just add the registry and install any component.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </section>
-
-        {/* Component Preview Section */}
-        <section className="py-20 border-t border-primary/20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-mono font-bold text-foreground mb-4">
-              Component Preview
-            </h2>
-            <p className="text-muted-foreground font-mono">
-              Interactive components with HUD effects
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Buttons Preview */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm font-mono">Buttons</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-wrap gap-3">
-                <Button>Default</Button>
-                <Button variant="destructive">Destructive</Button>
-                <Button size="sm">Small</Button>
-                <Button size="lg">Large</Button>
-              </CardContent>
-            </Card>
-
-            {/* Badges Preview */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm font-mono">Badges</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-wrap gap-3">
-                <Badge>Default</Badge>
-                <Badge variant="destructive">Alert</Badge>
-                <Badge><Shield width={12} height={12} className="mr-1" />Secure</Badge>
-                <Badge><Rocket width={12} height={12} className="mr-1" />Deploy</Badge>
-              </CardContent>
-            </Card>
-
-            {/* Cards Preview */}
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle className="text-sm font-mono">Cards with HUD Effects</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="p-4 bg-background/50 rounded border border-primary/30 space-y-2">
-                    <div className="flex justify-between text-xs font-mono">
-                      <span className="text-muted-foreground">CPU</span>
-                      <span className="text-primary">42%</span>
-                    </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div className="h-full w-[42%] bg-primary rounded-full" />
-                    </div>
+          {/* Right Panel - 3D Perspective */}
+          <div
+            className="flex flex-col justify-center px-6 gap-y-4"
+            style={{
+              perspective: '800px',
+              perspectiveOrigin: 'left center',
+            }}
+          >
+            <div className="flex flex-col -rotate-y-45 gap-y-4">
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-xs font-mono text-primary flex items-center gap-2">
+                    <Box3dPoint width={14} height={14} />
+                    SCANNER
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="gap-y-1.5 text-[10px]">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Card</span>
+                    <span className="text-primary">READY</span>
                   </div>
-                  <div className="p-4 bg-background/50 rounded border border-primary/30 space-y-2">
-                    <div className="flex justify-between text-xs font-mono">
-                      <span className="text-muted-foreground">Memory</span>
-                      <span className="text-primary">68%</span>
-                    </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div className="h-full w-[68%] bg-primary rounded-full" />
-                    </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Button</span>
+                    <span className="text-primary">READY</span>
                   </div>
-                  <div className="p-4 bg-background/50 rounded border border-primary/30 space-y-2">
-                    <div className="flex justify-between text-xs font-mono">
-                      <span className="text-muted-foreground">Network</span>
-                      <span className="text-primary">89%</span>
-                    </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div className="h-full w-[89%] bg-primary rounded-full" />
-                    </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Dialog</span>
+                    <span className="text-primary">READY</span>
                   </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Table</span>
+                    <span className="text-primary">READY</span>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-xs font-mono text-primary flex items-center gap-2">
+                    <Server width={14} height={14} />
+                    FUEL
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="gap-y-2">
+                  <div className="gap-y-1">
+                    <div className="flex justify-between text-[10px]">
+                      <span className="text-muted-foreground">Bundle</span>
+                      <span className="text-primary">142KB</span>
+                    </div>
+                    <Progress value={35} className="h-1.5" />
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Bottom Instrument Panel - spans all columns */}
+          <div className="col-span-3 px-8 pb-4 flex items-end justify-between">
+            {/* Left Instruments - Hologram Style */}
+            <div className="flex gap-4">
+              <div className="text-center animate-pulse" style={{ animationDuration: '3s' }}>
+                <div className="text-[10px] text-cyan-400/80 font-mono mb-1 tracking-widest">ENG</div>
+                <div
+                  className="w-12 h-12 rounded border border-cyan-400/60 flex items-center justify-center relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(180deg, rgba(0,255,255,0.15) 0%, rgba(0,255,255,0.05) 100%)',
+                    boxShadow: '0 0 20px rgba(0,255,255,0.4), inset 0 0 15px rgba(0,255,255,0.1)',
+                  }}
+                >
+                  <Cpu width={20} height={20} className="text-cyan-400" style={{ filter: 'drop-shadow(0 0 8px rgba(0,255,255,0.8))' }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/10 to-transparent" />
                 </div>
-              </CardContent>
-            </Card>
-          </div>
+              </div>
+              <div className="text-center animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.3s' }}>
+                <div className="text-[10px] text-cyan-400/80 font-mono mb-1 tracking-widest">SYS</div>
+                <div
+                  className="w-12 h-12 rounded border border-cyan-400/60 flex items-center justify-center relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(180deg, rgba(0,255,255,0.15) 0%, rgba(0,255,255,0.05) 100%)',
+                    boxShadow: '0 0 20px rgba(0,255,255,0.4), inset 0 0 15px rgba(0,255,255,0.1)',
+                  }}
+                >
+                  <Settings width={20} height={20} className="text-cyan-400" style={{ filter: 'drop-shadow(0 0 8px rgba(0,255,255,0.8))' }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/10 to-transparent" />
+                </div>
+              </div>
+              <div className="text-center animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.6s' }}>
+                <div className="text-[10px] text-cyan-400/80 font-mono mb-1 tracking-widest">WEP</div>
+                <div
+                  className="w-12 h-12 rounded border border-cyan-400/60 flex items-center justify-center relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(180deg, rgba(0,255,255,0.15) 0%, rgba(0,255,255,0.05) 100%)',
+                    boxShadow: '0 0 20px rgba(0,255,255,0.4), inset 0 0 15px rgba(0,255,255,0.1)',
+                  }}
+                >
+                  <Shield width={20} height={20} className="text-cyan-400" style={{ filter: 'drop-shadow(0 0 8px rgba(0,255,255,0.8))' }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/10 to-transparent" />
+                </div>
+              </div>
+            </div>
 
-          {/* View All Button */}
-          <div className="text-center mt-12">
-            <Button size="lg" onClick={() => router.push('/docs/components')}>
-              View All Components
-              <ArrowRight width={20} height={20} className="ml-2" />
-            </Button>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="py-12 border-t border-primary/20 text-center">
-          <p className="font-mono text-sm text-muted-foreground">
-            Made with ❤️ by{" "}
-            <a
-              href="https://github.com/enfp-dev-studio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:text-secondary transition-colors"
+            {/* Center Radar/Install Command */}
+            <div
+              className=""
+              onClick={copyInstallCommand}
             >
-              enfp-dev-studio
-            </a>
-          </p>
-        </footer>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-mono text-primary uppercase tracking-wider">Quick Install</span>
+                {copied ? (
+                  <Check width={14} height={14} className="text-primary" />
+                ) : (
+                  <Copy width={14} height={14} className="text-muted-foreground" />
+                )}
+              </div>
+              <code className="font-mono text-sm text-primary block text-center">
+                npx shadcn@latest add @shad-punk/all
+              </code>
+            </div>
+
+            {/* Right Info - Hologram Style */}
+            <div
+              className="text-right gap-y-1 px-4 py-2 rounded border border-cyan-400/50 animate-pulse"
+              style={{
+                animationDuration: '4s',
+                background: 'linear-gradient(180deg, rgba(0,255,255,0.1) 0%, rgba(0,255,255,0.03) 100%)',
+                boxShadow: '0 0 15px rgba(0,255,255,0.25), inset 0 0 10px rgba(0,255,255,0.05)',
+              }}
+            >
+              <div className="text-[10px] font-mono text-cyan-400/80 tracking-wider">ENFP-DEV-STUDIO</div>
+              <div className="text-[10px] font-mono text-cyan-400" style={{ filter: 'drop-shadow(0 0 4px rgba(0,255,255,0.6))' }}>MIT LICENSE</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
