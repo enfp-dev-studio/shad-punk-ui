@@ -1,7 +1,6 @@
 import type {NextConfig} from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
   experimental: {
     // 개발 중 캐싱 비활성화
     staleTimes: {
